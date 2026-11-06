@@ -1,25 +1,29 @@
 import type { Metadata } from "next";
 import Quiz, { type QuizItem } from "@/components/Quiz";
-import { getAllFacts } from "@/lib/facts";
+import { getFacts } from "@/lib/facts";
+import { getLang } from "@/lib/i18n-server";
+import { t as tr } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  title: "Quiz: Ilan ang alam mo?",
-  description: "5 tanong tungkol sa Pilipinas galing sa mga fact ni Juan. Walang login. I-share ang score mo!",
-  alternates: { canonical: "/quiz" },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = tr(await getLang());
+  return { title: t.meta.quizTitle, description: t.meta.quizDesc, alternates: { canonical: "/quiz" } };
+}
 
-export default function QuizPage() {
-  const pool: QuizItem[] = getAllFacts().flatMap((f) => f.quiz.map((q) => ({ ...q, slug: f.slug, title: f.title })));
+export default async function QuizPage() {
+  const lang = await getLang();
+  const t = tr(lang);
+  const pool: QuizItem[] = getFacts(lang).flatMap((f) => f.quiz.map((q) => ({ ...q, slug: f.slug, title: f.title })));
   return (
     <div className="wrap" style={{ paddingTop: 32 }}>
       <div style={{ textAlign: "center", marginBottom: 24 }}>
-        <span className="route">Alam mo ba?</span>
+        <span className="route">{t.quiz.badge}</span>
         <h1 style={{ marginTop: ".4em" }}>
-          Ilan ang <span className="hl">alam mo?</span>
+          {t.quiz.h1a}
+          <span className="hl">{t.quiz.h1b}</span>
         </h1>
-        <p className="muted">Simulan na! Lahat ng sagot ay galing sa mga fact ni Juan.</p>
+        <p className="muted">{t.quiz.intro}</p>
       </div>
-      <Quiz pool={pool} />
+      <Quiz key={lang} pool={pool} />
     </div>
   );
 }
