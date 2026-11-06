@@ -1,0 +1,25 @@
+{
+  "name": "juanfactaday-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "sync": "node scripts/sync-stories.mjs"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1",
+    "fuse.js": "^7.0.0",
+    "next": "15.5.29",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.7.0"
+  }
+}
