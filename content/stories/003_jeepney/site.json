@@ -6,32 +6,41 @@
  "tags": [
   "jeepney",
   "jeep",
+  "jitney",
   "world war 2",
   "sarao",
-  "transportasyon",
+  "francisco motors",
+  "para po",
+  "bayad po",
   "hari ng kalsada"
  ],
  "published": "2026-11-06",
  "verified": "2026-11-07",
- "big_number": null,
+ "big_number": "₱700",
+ "big_number_label": "ang inutang ni Leonardo Sarao para simulan ang Sarao Motors",
  "takeaways": [
-  "Galing ang jeepney sa mga military jeep ng Amerikano na naiwan pagkatapos ng World War II.",
-  "Pinahaba ito ng mga Pinoy, nilagyan ng upuan sa likod, at kinulayan.",
-  "Ang pangalang 'jeepney' ay pinagsamang 'jeep' at 'jitney' (murang pampasaherong sasakyan)."
- ],
- "extra": [
-  "Pagkatapos ng giyera, sira-sira ang mga kalsada at kulang ang pampublikong sasakyan sa Maynila. Maraming surplus na military jeep ang naiwan ng mga Amerikano, at ginawa itong paraan ng mga Pilipino para makapaghanapbuhay.",
-  "Kalaunan, may mga lokal na pagawaan na gumawa ng sariling jeepney, gaya ng Sarao Motors. Dito nagsimula ang makukulay na disenyo, chrome na palamuti, at mga pangalan at dasal na nakapinta sa harap: mga detalyeng ngayon ay simbolo na ng kulturang Pinoy."
+  "Galing ang jeepney sa mga military jeep na naiwan ng mga Amerikano pagkatapos ng World War II.",
+  "Ang 'jeepney' ay pinagsamang 'jeep' at 'jitney', salitang Amerikano para sa murang pampasaherong sasakyan.",
+  "Ang 'Para po!' ay galing sa Espanyol na 'parar', na ang ibig sabihin ay huminto."
  ],
  "quiz": [
   {
-   "q": "Saan galing ang unang mga jeepney?",
+   "q": "Saan galing ang salitang 'Para' sa jeep?",
    "options": [
-    "Mga military jeep na naiwan pagkatapos ng WWII",
-    "Mga bus galing Japan",
-    "Mga kalesa na nilagyan ng makina"
+    "Espanyol na 'parar'",
+    "Ingles na 'park'",
+    "Tagalog na 'parada'"
    ],
    "answer": 0
+  },
+  {
+   "q": "Ano ang trabaho ni Leonardo Sarao bago siya gumawa ng jeepney?",
+   "options": [
+    "Pulis",
+    "Kutsero",
+    "Guro"
+   ],
+   "answer": 1
   },
   {
    "q": "Anong dalawang salita ang pinagsama sa 'jeepney'?",
@@ -45,7 +54,7 @@
  ],
  "links": {
   "facebook": "https://www.facebook.com/juanfactaday",
-  "tiktok": "",
-  "instagram": ""
- }
+  "video": "/videos/saan-galing-ang-jeepney.mp4"
+ },
+ "duration": 60
 }
