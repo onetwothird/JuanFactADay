@@ -1,134 +1,208 @@
 import Link from "next/link";
-import Image from "next/image";
 import Juan from "@/components/Juan";
-import FactCard from "@/components/FactCard";
+import ReelPlayer from "@/components/ReelPlayer";
+import ReelShelf from "@/components/ReelShelf";
 import CategoryIcon from "@/components/CategoryIcon";
-import { getAllFacts, pad, SITE } from "@/lib/facts";
-import { CATEGORIES, categoryOf } from "@/lib/categories";
+import { getFacts, pad, SITE, toReel } from "@/lib/facts";
+import { CATEGORIES, catLabel } from "@/lib/categories";
+import { getLang } from "@/lib/i18n-server";
+import { t as tr } from "@/lib/i18n";
 
-export default function Home() {
-  const facts = getAllFacts();
-  const today = facts[0];
-  const recent = facts.slice(0, 6);
-  const usedCats = new Set(facts.map((f) => f.category));
+export default async function Home() {
+  const lang = await getLang();
+  const t = tr(lang);
+  const h = t.home;
+  const facts = getFacts(lang);
+  const latest = facts.find((f) => f.video) ?? facts[0];
+  const used = new Set(facts.map((f) => f.category));
+  const ticker = [h.ticker[0], h.ticker[1], ...facts.slice(0, 6).map((f) => f.title), h.ticker[2], h.ticker[3]];
 
   return (
     <>
+      {/* ---------- HERO ---------- */}
       <section className="hero">
-        <div className="wrap">
-          <div>
+        <div className="wrap hero-grid">
+          <div className="hero-copy">
             <span className="route">
-              <span className="dot" /> Bagong fact araw-araw
+              <span className="dot" /> {h.badge}
             </span>
             <h1>
-              Isang kaalaman tungkol sa <span className="hl">Pilipinas</span>, <span style={{ whiteSpace: "nowrap" }}>araw-araw.</span>
+              {h.h1a}
+              <span className="hl">{h.h1b}</span>, <span className="nowrap">{h.h1c}</span>
             </h1>
             <p className="lead">
-              Akala mo 7,107 pa rin ang isla natin? Hindi na. Si Juan ang bahala sa mga fact na hindi itinuro sa atin sa school, at may sources lahat.
+              {h.lead}
             </p>
             <div className="cta">
-              <Link href={`/facts/${today.slug}`} className="btn btn-yellow">
-                ▶ Panoorin ang latest
+              <Link href={`/facts/${latest.slug}`} className="btn btn-yellow">
+                {h.watchLatest}
               </Link>
-              <Link href="/random" className="btn btn-outline">
-                Random fact
-              </Link>
+              <a href={SITE.facebook} target="_blank" rel="noopener" className="btn btn-outline">
+                {t.nav.followFb}
+              </a>
             </div>
           </div>
-          <div className="hero-juan">
-            <span className="bubble left">Alam mo ba? 🤔</span>
-            <Juan size={300} className="bob" />
+
+          <div className="hero-stage">
+            <div className="hero-juan">
+              <span className="bubble">{h.bubble}</span>
+              <Juan pose="wave" size={210} className="bob" title={h.juanWave} />
+            </div>
+            {latest.video && (
+              <figure className="hero-reel">
+                <span className="route red hero-reel-badge">{t.reel.latest} · {pad(latest.number)}</span>
+                <ReelPlayer src={latest.video} poster={latest.poster} captions={latest.captions} title={latest.title} ambient />
+                <figcaption>
+                  <Link href={`/facts/${latest.slug}`}>{latest.title} →</Link>
+                </figcaption>
+              </figure>
+            )}
           </div>
         </div>
       </section>
 
+      {/* ---------- jeepney signboard ticker ---------- */}
+      <div className="ticker-wrap" aria-hidden>
+      <div className="ticker">
+        <div className="ticker-track">
+          {[...ticker, ...ticker].map((t, i) => (
+            <span key={i}>
+              {t} <i>★</i>
+            </span>
+          ))}
+        </div>
+      </div>
+      </div>
+
+      {/* ---------- REELS ---------- */}
       <section className="block">
         <div className="wrap">
           <div className="sec-head">
             <div>
-              <span className="route red">Fact ngayong araw · {pad(today.number)}</span>
-              <h2>Ang latest kay Juan</h2>
+              <span className="eyebrow">{h.reelsEyebrow}</span>
+              <h2>{h.reelsH}</h2>
             </div>
-          </div>
-          <article className="kuwaderno today">
-            <Link href={`/facts/${today.slug}`} className="fcard" aria-label={today.title}>
-              <div className="img">
-                <Image src={today.thumbnail} alt={`Fact card: ${today.title}`} fill sizes="220px" style={{ objectFit: "cover" }} priority />
-                <span className="vplay" aria-hidden>
-                  <svg width="18" height="18" viewBox="0 0 24 24"><path d="M6 3l15 9-15 9z" fill="#0A1640" /></svg>
-                </span>
-              </div>
+            <Link href="/facts" className="btn btn-outline btn-sm">
+              {h.allReels}
             </Link>
+          </div>
+          <ReelShelf reels={facts.map((f) => toReel(f, lang))} />
+        </div>
+      </section>
+
+      {/* ---------- FORMAT (komiks strip) ---------- */}
+      <section className="block">
+        <div className="wrap">
+          <span className="eyebrow">{h.howEyebrow}</span>
+          <h2>{h.howH}</h2>
+          <div className="komiks" role="list">
+            <div className="panel-k k1" role="listitem">
+              <span className="k-num" aria-hidden>1</span>
+              <Juan pose="thinking" size={120} title="" />
+              <div>
+                <h3>{h.k1h}</h3>
+                <p>{h.k1p}</p>
+              </div>
+            </div>
+            <div className="panel-k k2" role="listitem">
+              <span className="k-num" aria-hidden>2</span>
+              <Juan pose="read" size={120} title="" />
+              <div>
+                <h3>{h.k2h}</h3>
+                <p>{h.k2p}</p>
+              </div>
+            </div>
+            <div className="panel-k k3" role="listitem">
+              <span className="k-num" aria-hidden>3</span>
+              <Juan pose="excited" size={120} title="" />
+              <div>
+                <h3>{h.k3h}</h3>
+                <p>{h.k3p}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- FACT-CHECK + CATEGORIES ---------- */}
+      <section className="block">
+        <div className="wrap split">
+          <div className="check-card">
+            <Juan pose="magnify" size={170} title={h.juanMagnify} />
             <div>
-              <div className="muted" style={{ fontWeight: 600 }}>{categoryOf(today.category).label}</div>
-              <h3 style={{ fontSize: "clamp(1.5rem, 1.2rem + 1.4vw, 2.2rem)", fontWeight: 800 }}>{today.title}</h3>
-              <p>{today.script.slice(0, 2).join(" ")}</p>
-              <Link href={`/facts/${today.slug}`} style={{ color: "var(--juan-red)", fontWeight: 700 }}>
-                Basahin ang buong fact →
+              <span className="eyebrow dark">{h.checkEyebrow}</span>
+              <h2>{h.checkH}</h2>
+              <p>{h.checkP}</p>
+              <Link href="/tungkol" className="link-strong">
+                {h.checkLink}
               </Link>
             </div>
-          </article>
-        </div>
-      </section>
-
-      <section className="block" style={{ paddingTop: 8 }}>
-        <div className="wrap">
-          <div className="sec-head">
-            <h2>Mga bagong fact</h2>
-            <Link href="/facts" className="btn btn-outline btn-sm">Lahat ng facts</Link>
           </div>
-          <div className="grid">
-            {recent.map((f) => (
-              <FactCard key={f.slug} fact={f} />
-            ))}
+          <div>
+            <span className="eyebrow">{h.catEyebrow}</span>
+            <h2>{h.catH}</h2>
+            <div className="chips">
+              {CATEGORIES.map((c) => (
+                <Link key={c.slug} href={`/kategorya/${c.slug}`} className={`chip ${used.has(c.slug) ? "" : "soon"}`}>
+                  <CategoryIcon slug={c.slug} /> {catLabel(c, lang)}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="block" style={{ paddingTop: 8 }}>
-        <div className="wrap">
-          <h2>Pumili ng kategorya</h2>
-          <div className="chips">
-            {CATEGORIES.filter((c) => usedCats.has(c.slug)).map((c) => (
-              <Link key={c.slug} href={`/kategorya/${c.slug}`} className="chip">
-                <CategoryIcon slug={c.slug} /> {c.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      {/* ---------- QUIZ ---------- */}
       <section className="block">
         <div className="wrap">
           <div className="panel quiz-teaser">
             <div>
               <span className="route navy">Quiz</span>
-              <h2 style={{ marginTop: ".4em" }}>Ilan ang alam mo?</h2>
-              <p style={{ fontWeight: 600 }}>5 tanong galing sa mga fact ni Juan. Walang login, walang pressure.</p>
-              <Link href="/quiz" className="btn" style={{ background: "var(--juan-navy)", color: "#fff" }}>
-                Simulan na!
+              <h2>{h.quizH}</h2>
+              <p>{h.quizP}</p>
+              <Link href="/quiz" className="btn btn-navy">
+                {h.quizCta}
               </Link>
             </div>
-            <Juan pose="thinking" size={170} title="Si Juan, nag-iisip" />
+            <Juan pose="thinking" size={150} title={h.juanThinking} />
           </div>
         </div>
       </section>
 
-      <section className="block" style={{ paddingTop: 8 }}>
+      {/* ---------- FOLLOW ---------- */}
+      <section className="block">
         <div className="wrap">
-          <h2>I-follow si Juan</h2>
-          <div className="follow-strip">
-            <a className="social fb" href={SITE.facebook} target="_blank" rel="noopener">
-              <svg width="30" height="30" viewBox="0 0 24 24" aria-hidden><path fill="#fff" d="M14 8h3V4h-3c-2.8 0-4 1.7-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.3-.6.6-.6z" /></svg>
-              <span>Facebook<small>Bagong Reel araw-araw, 7:30 PM</small></span>
-            </a>
-            <a className="social msg" href={SITE.messenger} target="_blank" rel="noopener">
-              <svg width="30" height="30" viewBox="0 0 24 24" aria-hidden><path fill="#0A1640" d="M12 2C6.5 2 2 6.1 2 11.3c0 2.9 1.4 5.5 3.7 7.2V22l3.4-1.9c.9.3 1.9.4 2.9.4 5.5 0 10-4.1 10-9.2S17.5 2 12 2zm1 12.4-2.6-2.7-5 2.7 5.5-5.8 2.6 2.7 5-2.7z" /></svg>
-              <span>Messenger<small>May tanong? I-message si Juan</small></span>
-            </a>
-            <span className="social off">
-              <span>Instagram at TikTok<small>Malapit na!</small></span>
-            </span>
+          <div className="follow-card">
+            <div className="follow-copy">
+              <span className="route navy">
+                <span className="dot" /> {h.followBadge}
+              </span>
+              <h2>
+                {h.followHa}
+                <span className="nowrap">{h.followHb}</span>
+              </h2>
+              <p>{h.followP}</p>
+              <div className="follow-actions">
+                <a className="btn btn-fb" href={SITE.facebook} target="_blank" rel="noopener">
+                  <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden>
+                    <path fill="currentColor" d="M14 8h3V4h-3c-2.8 0-4 1.7-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.3-.6.6-.6z" />
+                  </svg>
+                  {t.nav.followFb}
+                </a>
+                <a className="btn btn-white" href={SITE.messenger} target="_blank" rel="noopener">
+                  <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden>
+                    <path fill="currentColor" d="M12 2C6.5 2 2 6.1 2 11.3c0 2.9 1.4 5.5 3.7 7.2V22l3.4-1.9c.9.3 1.9.4 2.9.4 5.5 0 10-4.1 10-9.2S17.5 2 12 2zm1 12.4-2.6-2.7-5 2.7 5.5-5.8 2.6 2.7 5-2.7z" />
+                  </svg>
+                  {t.nav.messageJuan}
+                </a>
+              </div>
+              <p className="soon-line">
+                <span className="soon-chip">Instagram</span>
+                <span className="soon-chip">TikTok</span>
+                <span>{h.soon}</span>
+              </p>
+            </div>
+            <Juan pose="sign" sign={h.sign} size={230} title={h.juanSign} className="follow-juan" />
           </div>
         </div>
       </section>
