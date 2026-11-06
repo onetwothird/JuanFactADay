@@ -1,0 +1,48 @@
+/* Juan Fact a Day — design tokens (§2.2 / §2.3 of the spec). Match the videos exactly. */
+:root {
+  --juan-yellow: #ffc72c;
+  --juan-yellow-dark: #c9961a;
+  --juan-navy: #0f1a3c;
+  --juan-navy-deep: #0a1640;
+  --juan-navy-shadow: #0b1a50;
+  --juan-blue-a: #1e3a8a;
+  --juan-blue-b: #2b4db8;
+  --juan-red: #d7263d;
+  --juan-white: #ffffff;
+  --juan-soft: #dce6ff;
+  --ph-blue: #0038a8;
+  --ph-red: #ce1126;
+  --ph-yellow: #fcd116;
+  --cream: #fff8e7;
+  --paper: #fffdf6;
+  --ink-line: #b9cbe8;
+
+  /* theme (dark is default — matches the videos) */
+  --bg: var(--juan-navy);
+  --bg-2: #13214a;
+  --text: var(--juan-white);
+  --text-2: var(--juan-soft);
+  --card: #16255a;
+  --card-line: var(--juan-navy-deep);
+  --accent: var(--juan-yellow);
+  --accent-ink: var(--juan-navy);
+  --link: var(--juan-yellow);
+
+  --radius: 20px;
+  --radius-sm: 14px;
+  --outline: 3px solid var(--juan-navy-deep);
+  --shadow-print: 5px 6px 0 var(--juan-navy-deep);
+
+  --fs-h1: clamp(2.25rem, 1.4rem + 3.8vw, 4rem);
+  --fs-h2: clamp(1.75rem, 1.35rem + 1.8vw, 2.5rem);
+  --fs-body: clamp(1.0625rem, 1rem + 0.2vw, 1.125rem);
+}
+
+:root[data-theme="light"] {
+  --bg: var(--cream);
+  --bg-2: #fbefd2;
+  --text: var(--juan-navy);
+  --text-2: #3b4a73;
+  --card: #ffffff;
+  --link: #8a5f00;
+}
