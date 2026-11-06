@@ -1,25 +1,43 @@
 import type { Metadata } from "next";
 import Archive from "@/components/Archive";
-import { getAllFacts } from "@/lib/facts";
+import Juan from "@/components/Juan";
+import { getFacts, toReel } from "@/lib/facts";
+import { getLang } from "@/lib/i18n-server";
+import { t as tr } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  title: "Lahat ng Facts",
-  description: "Hanapin ang lahat ng fact ni Juan tungkol sa Pilipinas: kasaysayan, kultura, lugar at iba pa. May sources lahat.",
-  alternates: { canonical: "/facts" },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = tr(await getLang());
+  return { title: t.meta.factsTitle, description: t.meta.factsDesc, alternates: { canonical: "/facts" } };
+}
 
-export default function FactsPage() {
-  const facts = getAllFacts();
+export default async function FactsPage() {
+  const lang = await getLang();
+  const t = tr(lang);
+  const facts = getFacts(lang);
+  const items = facts.map((f) => ({
+    reel: toReel(f, lang),
+    category: f.category,
+    search: { title: f.title, tags: f.tags, script: (f.translated ? f.paragraphs : f.script).join(" "), takeaways: f.takeaways },
+  }));
   return (
-    <div className="wrap" style={{ paddingTop: 32 }}>
-      <span className="route">Archive</span>
-      <h1 style={{ marginTop: ".4em" }}>
-        Lahat ng <span className="hl">fact</span> ni Juan
-      </h1>
-      <p className="muted" style={{ maxWidth: "52ch" }}>
-        Bawat isa, may video, buong kwento at listahan ng sources. Hanapin ang gusto mo, o pumili ng kategorya.
-      </p>
-      <Archive facts={facts} />
-    </div>
+    <>
+      <section className="page-head">
+        <div className="wrap page-head-grid">
+          <div>
+            <span className="route">{t.archive.badge}</span>
+            <h1>
+              {t.archive.h1a}
+              <span className="hl">{t.archive.h1b}</span>
+              {t.archive.h1c}
+            </h1>
+            <p className="lead">{t.archive.lead}</p>
+          </div>
+          <Juan pose="read" size={150} title={t.archive.juanRead} className="page-head-juan" />
+        </div>
+      </section>
+      <div className="wrap">
+        <Archive items={items} />
+      </div>
+    </>
   );
 }
