@@ -1,0 +1,85 @@
+{
+ "title": "Ang Yo-yo at si Pedro Flores",
+ "output": {
+  "path": "out/02_yoyo_pedro_flores.mp4",
+  "aspect": "9:16"
+ },
+ "voices": {
+  "narrator": {
+   "engine": "edge",
+   "voice": "fil-PH-AngeloNeural",
+   "rate": "+6%",
+   "color": "#FFFFFF"
+  }
+ },
+ "captions": {
+  "style": "pop",
+  "font": "Poppins",
+  "highlight": "#FFC72C",
+  "max_words": 3
+ },
+ "defaults": {
+  "motion": "auto",
+  "pause_after": 0.2
+ },
+ "scenes": [
+  {
+   "image": "cards/v2_1.jpg",
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Alam mo ba? Ang sikat na laruang yo-yo, may kwentong Pinoy!"
+    }
+   ],
+   "motion": "in"
+  },
+  {
+   "image": "cards/v2_2.jpg",
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Noong 1928, nagtayo ng yo-yo company sa California si Pedro Flores."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Isa siyang Pilipino na taga-Ilocos Norte."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Siya ang nagpasikat ng yo-yo sa Amerika."
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "image": "cards/v2_3.jpg",
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Ayon pa sa kwento, salitang Ilocano raw ang yo-yo,"
+    },
+    {
+     "speaker": "narrator",
+     "text": "na ang ibig sabihin ay, bumalik ka."
+    }
+   ],
+   "transition": "fade",
+   "hold_after": 0.3
+  },
+  {
+   "image": "cards/v2_4.jpg",
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Pinoy pride talaga! Alam mo na ba ito dati? I-comment mo!"
+    },
+    {
+     "speaker": "narrator",
+     "text": "I-follow si Juan para sa bagong fact araw-araw!"
+    }
+   ],
+   "transition": "fade",
+   "hold_after": 0.6
+  }
+ ]
+}
