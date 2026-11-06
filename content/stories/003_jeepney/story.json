@@ -1,0 +1,80 @@
+{
+ "title": "Saan Galing ang Jeepney",
+ "output": {
+  "path": "out/03_jeepney.mp4",
+  "aspect": "9:16"
+ },
+ "voices": {
+  "narrator": {
+   "engine": "edge",
+   "voice": "fil-PH-AngeloNeural",
+   "rate": "+6%",
+   "color": "#FFFFFF"
+  }
+ },
+ "captions": {
+  "style": "pop",
+  "font": "Poppins",
+  "highlight": "#FFC72C",
+  "max_words": 3
+ },
+ "defaults": {
+  "motion": "auto",
+  "pause_after": 0.2
+ },
+ "scenes": [
+  {
+   "image": "cards/v3_1.jpg",
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Alam mo ba kung saan talaga galing ang jeepney?"
+    }
+   ],
+   "motion": "in"
+  },
+  {
+   "image": "cards/v3_2.jpg",
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Pagkatapos ng World War Two, maraming military jeep ang naiwan ng mga Amerikano."
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "image": "cards/v3_3.jpg",
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Ginamit ito ng mga Pilipino bilang pampasaherong sasakyan."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Pinahaba, nilagyan ng upuan sa likod, at kinulayan!"
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "image": "cards/v3_4.jpg",
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Kaya ngayon, tinatawag itong Hari ng Kalsada."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Ano ang paborito mong jeepney route? I-comment mo!"
+    },
+    {
+     "speaker": "narrator",
+     "text": "I-follow si Juan para sa bagong fact araw-araw!"
+    }
+   ],
+   "transition": "fade",
+   "hold_after": 0.6
+  }
+ ]
+}
