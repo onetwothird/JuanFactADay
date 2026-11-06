@@ -1,8 +1,13 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLang } from "./LangProvider";
 
 export default function ShareBar({ url, title, card }: { url: string; title: string; card: string }) {
+  const { t: tt } = useLang();
+  const s = tt.share;
   const [copied, setCopied] = useState(false);
+  const [canShare, setCanShare] = useState(false);
+  useEffect(() => setCanShare(typeof navigator !== "undefined" && !!navigator.share), []);
   const u = encodeURIComponent(url);
   const t = encodeURIComponent(`${title} | Juan Fact a Day`);
 
@@ -23,13 +28,17 @@ export default function ShareBar({ url, title, card }: { url: string; title: str
 
   return (
     <div>
-      <h2 style={{ fontSize: "1.3rem" }}>I-share sa barkada</h2>
+      <h2 style={{ fontSize: "1.3rem" }}>{s.h}</h2>
       <div className="sharebar">
         <a className="btn btn-yellow btn-sm" href={`https://www.facebook.com/sharer/sharer.php?u=${u}`} target="_blank" rel="noopener">Facebook</a>
-        <a className="btn btn-outline btn-sm" href={`fb-messenger://share/?link=${u}`}>Messenger</a>
+        {canShare && (
+          <button className="btn btn-outline btn-sm" onClick={() => navigator.share({ title, url }).catch(() => {})}>
+            {s.native}
+          </button>
+        )}
         <a className="btn btn-outline btn-sm" href={`https://x.com/intent/post?url=${u}&text=${t}`} target="_blank" rel="noopener">X</a>
-        <button className="btn btn-outline btn-sm" onClick={copy} aria-live="polite">{copied ? "Na-copy na! ✅" : "Copy link"}</button>
-        <a className="btn btn-outline btn-sm" href={card} download>I-download ang fact card</a>
+        <button className="btn btn-outline btn-sm" onClick={copy} aria-live="polite">{copied ? s.copied : s.copy}</button>
+        <a className="btn btn-outline btn-sm" href={card} download={`juan-fact-${title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}.jpg`}>{s.download}</a>
       </div>
     </div>
   );
