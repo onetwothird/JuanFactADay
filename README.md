@@ -25,19 +25,26 @@ content/stories/004_tarsier/
 ├── story.json      # the video script (scenes[].lines[].text is used as the article)
 ├── caption.txt     # social caption; lines after "Sources" that start with "- " become the source list
 ├── site.json       # website info: number, slug, title, category, tags, dates, takeaways, quiz, links
-└── thumbnail.jpg   # optional; the first scene card is used if missing
+└── thumbnail.jpg   # cover image (public/videos/<slug>-poster.jpg is used if present)
 ```
 
-Scene cards go in `public/cards/<slug>/` with the same names as the `image` files in `story.json`
-(for example `cards/v1_0.jpg` → `public/cards/<slug>/v1_0.jpg`). They power the card viewer on the fact page.
-
-Copy `content/stories/001_7641-na-isla/site.json` as a starting point. Categories:
+Copy `content/stories/001_7641_na_isla/site.json` as a starting point. Categories:
 `kasaysayan`, `kultura`, `lugar`, `pagkain`, `hayop`, `wika`, `tao`.
 
 If your video project keeps stories elsewhere, `npm run sync -- <path-to-stories>` copies only the web files
-(`story.json`, `caption.txt`, `site.json`, `thumbnail.jpg`, `cards/`). Videos (`.mp4`) are never committed.
+(`story.json`, `caption.txt`, `site.json`, `thumbnail.jpg`). Add the compressed video yourself (see below).
 
 **Rule:** every fact needs real sources in `caption.txt`. No sources, no publish.
+
+To hide a story while you work on it, add `"draft": true` to its `site.json`.
+
+### Videos
+
+Put the Reel in `public/videos/<slug>.mp4` (plus `<slug>.vtt` captions and `<slug>-poster.jpg`). Compress first so pages stay fast:
+
+```bash
+ffmpeg -i in.mp4 -vf scale=720:1280 -c:v libx264 -preset slow -crf 26 -c:a aac -b:a 96k -movflags +faststart public/videos/<slug>.mp4
+```
 
 ## Deploy on Vercel (free)
 
@@ -55,9 +62,9 @@ If your video project keeps stories elsewhere, `npm run sync -- <path-to-stories
 
 | Path | What it is |
 |---|---|
-| `/` | Home: hero with Juan, today's fact, recent facts, categories, quiz teaser, follow links |
+| `/` | Home: hero with the latest Reel playing, Reels shelf with a full-screen viewer, format strip, fact-check, categories, quiz, follow |
 | `/facts` | Archive with instant search (Fuse.js), category filter and sort |
-| `/facts/[slug]` | Fact page: card viewer, full story, big number, takeaways, sources, share bar, prev/next, related |
+| `/facts/[slug]` | Fact page: the Reel in a phone frame, full story, big number, takeaways, sources, share bar, prev/next, related |
 | `/kategorya/[cat]` | Facts per category |
 | `/quiz` | 5 random questions from all facts, Juan reacts, shareable score image, best score saved in the browser |
 | `/random` | Redirects to a random fact |
@@ -65,7 +72,7 @@ If your video project keeps stories elsewhere, `npm run sync -- <path-to-stories
 | `/sitemap.xml`, `/robots.txt`, `/rss.xml` | SEO and feed |
 | `/facts/[slug]/opengraph-image` | Auto-generated 1200×630 share image per fact |
 
-`components/Juan.tsx` draws Juan as inline SVG in five poses: `default`, `thinking`, `excited`, `oops`, `peek`.
+`components/Juan.tsx` draws Juan (full body) as inline SVG in nine poses: `wave`, `stand`, `thinking`, `excited`, `oops`, `read`, `magnify`, `sign` (custom text), `peek`.
 Brand colors live in `styles/tokens.css`.
 
 ## License
