@@ -1,0 +1,71 @@
+{
+ "number": 1,
+ "slug": "ilan-ang-isla-ng-pilipinas",
+ "title": "Ilan Talaga ang Isla ng Pilipinas?",
+ "category": "lugar",
+ "tags": [
+  "isla",
+  "7641",
+  "7107",
+  "namria",
+  "heograpiya",
+  "luzon",
+  "visayas",
+  "mindanao",
+  "batanes",
+  "coastline",
+  "watawat"
+ ],
+ "published": "2026-11-06",
+ "verified": "2026-11-07",
+ "big_number": "7,641",
+ "big_number_label": "na isla, ayon sa bilang ng NAMRIA",
+ "takeaways": [
+  "Hindi na 7,107: dahil sa modernong mapping ng NAMRIA, 534 na isla ang nadagdag, kaya 7,641 na.",
+  "Mahigit 5,000 sa mga islang ito ang wala pang opisyal na pangalan.",
+  "Ang tatlong bituin sa watawat ay para sa Luzon, Visayas at Mindanao."
+ ],
+ "quiz": [
+  {
+   "q": "Ilan ang isla ng Pilipinas ayon sa NAMRIA?",
+   "options": [
+    "7,107",
+    "7,641",
+    "8,000"
+   ],
+   "answer": 1
+  },
+  {
+   "q": "Ano ang pinakamalaking isla ng Pilipinas?",
+   "options": [
+    "Mindanao",
+    "Samar",
+    "Luzon"
+   ],
+   "answer": 2
+  },
+  {
+   "q": "Saan ang pinakahilagang dulo ng Pilipinas?",
+   "options": [
+    "Batanes",
+    "Ilocos Norte",
+    "Cagayan"
+   ],
+   "answer": 0
+  },
+  {
+   "q": "Para saan ang tatlong bituin sa ating watawat?",
+   "options": [
+    "Tatlong bayani",
+    "Luzon, Visayas at Mindanao",
+    "Tatlong lungsod"
+   ],
+   "answer": 1
+  }
+ ],
+ "links": {
+  "facebook": "https://www.facebook.com/juanfactaday",
+  "video": "/videos/ilan-ang-isla-ng-pilipinas.mp4"
+ },
+ "duration": 57
+}
