@@ -2,22 +2,33 @@
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import Juan from "./Juan";
+import { useLang } from "./LangProvider";
 
 export default function SuggestForm({ formspreeId, messenger }: { formspreeId: string; messenger: string }) {
+  const { t } = useLang();
+  const s = t.suggest;
   const sp = useSearchParams();
   const mali = sp.get("mali");
   const [state, setState] = useState<"idle" | "sending" | "ok" | "err">("idle");
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const data = new FormData(e.currentTarget);
     if (!formspreeId) {
-      setState("err");
+      // No form backend set up yet: hand the suggestion to Messenger, pre-filled.
+      const lines = [
+        `${s.msgLines.topic}: ${data.get("topic")}`,
+        data.get("bakit") ? `${s.msgLines.why}: ${data.get("bakit")}` : "",
+        data.get("pangalan") ? `${s.msgLines.name}: ${data.get("pangalan")}` : "",
+      ].filter(Boolean);
+      window.open(`${messenger}?text=${encodeURIComponent(lines.join("\n"))}`, "_blank", "noopener");
+      setState("ok");
       return;
     }
     setState("sending");
     const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
       method: "POST",
-      body: new FormData(e.currentTarget),
+      body: data,
       headers: { Accept: "application/json" },
     }).catch(() => null);
     setState(res?.ok ? "ok" : "err");
@@ -26,8 +37,9 @@ export default function SuggestForm({ formspreeId, messenger }: { formspreeId: s
   if (state === "ok") {
     return (
       <div className="panel" style={{ textAlign: "center", maxWidth: 620 }}>
-        <Juan pose="excited" size={150} title="Si Juan, masaya" />
-        <h2>Salamat! Baka ikaw ang next na Juan Fact! 💡</h2>
+        <Juan pose="excited" size={150} title={s.juanHappy} />
+        <h2>{s.thanks}</h2>
+        {!formspreeId && <p style={{ fontWeight: 600 }}>{s.msgOpened}</p>}
       </div>
     );
   }
@@ -35,28 +47,34 @@ export default function SuggestForm({ formspreeId, messenger }: { formspreeId: s
   return (
     <form className="form" onSubmit={submit}>
       <label>
-        Topic *
-        <input name="topic" required defaultValue={mali ? `May mali sa: ${mali}` : sp.get("topic") ?? ""} placeholder="Hal. Saan galing ang salitang 'boondocks'?" />
+        {s.topic}
+        <input name="topic" required defaultValue={mali ? s.wrongIn(mali) : sp.get("topic") ?? ""} placeholder={s.topicPh} />
       </label>
       <label>
-        Bakit interesting? <small>(optional)</small>
+        {s.why} <small>{s.optional}</small>
         <textarea name="bakit" rows={4} />
       </label>
       <label>
-        Pangalan para ma-credit <small>(optional)</small>
+        {s.name} <small>{s.optional}</small>
         <input name="pangalan" autoComplete="nickname" />
       </label>
       <label>
-        Email <small>(optional, kung gusto mong ma-update)</small>
+        {s.email} <small>{s.emailNote}</small>
         <input name="email" type="email" autoComplete="email" />
       </label>
       <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
       <div>
-        <button className="btn btn-yellow" disabled={state === "sending"}>{state === "sending" ? "Ipinapadala…" : "Ipadala kay Juan"}</button>
+        <button className="btn btn-yellow" disabled={state === "sending"}>
+          {state === "sending" ? s.sending : formspreeId ? s.send : s.sendMsg}
+        </button>
       </div>
       {state === "err" && (
         <p role="alert" style={{ fontWeight: 600 }}>
-          Ay, hindi naipadala. Pakisubukan ulit, o <a href={messenger} target="_blank" rel="noopener">i-message na lang si Juan sa Messenger</a>.
+          {s.err1}
+          <a href={messenger} target="_blank" rel="noopener">
+            {s.err2}
+          </a>
+          .
         </p>
       )}
     </form>
