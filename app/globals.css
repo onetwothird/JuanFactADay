@@ -131,7 +131,6 @@ main, header, footer, .ticker { position: relative; z-index: 1; }
 .follow-menu a { color: var(--juan-navy); padding: 12px; border-radius: 10px; text-decoration: none; display: grid; }
 .follow-menu a small { color: #4b5678; }
 .follow-menu a:hover { background: var(--juan-yellow); }
-.follow-menu .soon { padding: 10px 12px; color: #6b7590; font-size: .88rem; }
 
 @media (max-width: 760px) {
   .site-header .wrap { min-height: 60px; }
@@ -370,8 +369,12 @@ section.block { padding-block: clamp(40px, 6vw, 72px); }
 @media (max-width: 760px) { .peek { display: none; } }
 
 .bubble { position: relative; display: inline-block; background: #fff; color: var(--juan-navy); border: 3px solid var(--juan-navy-deep); border-radius: 22px; padding: .5em .95em; font-weight: 800; font-size: 1.1rem; line-height: 1.2;
-  box-shadow: 4px 5px 0 var(--juan-navy-deep); rotate: -4deg; }
-.bubble::after { content: ""; position: absolute; left: 26%; bottom: -18px; width: 24px; height: 20px; background: #fff; border-left: 3px solid var(--juan-navy-deep); border-bottom: 3px solid var(--juan-navy-deep); clip-path: polygon(0 0, 100% 0, 0 100%); }
+  filter: drop-shadow(4px 5px 0 var(--juan-navy-deep)); rotate: -4deg; --tail: 26%; }
+/* Tail: a navy triangle (the outline) with a white one inset 3px on top. The white one also covers the
+   bubble's bottom border where they meet, and drop-shadow on .bubble shades bubble + tail as one shape. */
+.bubble::before, .bubble::after { content: ""; position: absolute; top: 100%; clip-path: polygon(0 0, 100% 0, 0 100%); }
+.bubble::before { left: var(--tail); width: 28px; height: 23px; background: var(--juan-navy-deep); }
+.bubble::after { left: calc(var(--tail) + 3px); width: 20px; height: 16.5px; background: #fff; }
 
 /* =========================================================
    Archive, quiz, forms, prose
@@ -505,13 +508,19 @@ select.sort { min-height: 46px; border-radius: 999px; border: 3px solid var(--li
 .btn-fb { background: #1877f2; color: #fff; box-shadow: 0 5px 0 var(--juan-navy-deep); }
 .btn-fb:hover { background: #2c86ff; transform: translateY(-1px); }
 .btn-fb:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--juan-navy-deep); }
-.soon-line { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 18px 0 0; font-size: .92rem; }
-.soon-chip { border: 2px dashed var(--juan-navy); border-radius: 999px; padding: 3px 12px; font-weight: 700; }
+.btn-ig { background: linear-gradient(45deg, #f9a825, #e1306c 45%, #833ab4); color: #fff; box-shadow: 0 5px 0 var(--juan-navy-deep); }
+.btn-tt { background: #111; color: #fff; box-shadow: 0 5px 0 var(--juan-navy-deep); }
+.btn-tt svg { filter: drop-shadow(-1.5px -1px 0 #25f4ee) drop-shadow(1.5px 1px 0 #fe2c55); }
+.btn-ig:hover, .btn-tt:hover { transform: translateY(-1px); filter: brightness(1.08); }
+.btn-ig:active, .btn-tt:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--juan-navy-deep); }
 .follow-juan { margin-bottom: 4px; margin-right: 10px; }
 @media (max-width: 700px) {
   .follow-card { grid-template-columns: 1fr; padding: 26px 20px 0; }
   .follow-copy { padding-bottom: 0; }
   .follow-actions .btn { flex: 1 1 100%; }
+  .follow-actions .btn-ig, .follow-actions .btn-tt { flex-basis: calc(50% - 6px); min-width: 0; padding-inline: .7em; }
+  .follow-actions .btn svg { flex-shrink: 0; }
+  @media (max-width: 360px) { .follow-actions .btn-ig, .follow-actions .btn-tt { flex-basis: 100%; } }
   .follow-juan { justify-self: center; width: 170px; height: auto; margin: 6px 0 4px; }
 }
 
@@ -526,7 +535,7 @@ select.sort { min-height: 46px; border-radius: 999px; border: 3px solid var(--li
 .hero-stage { display: grid; grid-template-columns: auto auto; justify-content: center; align-items: flex-end; gap: 0; min-height: 0; padding-left: 0; }
 .hero-juan { position: relative; left: auto; bottom: auto; margin-right: -34px; margin-bottom: 26px; z-index: 3; }
 .hero-juan .bubble { position: absolute; left: 50%; top: -6px; translate: -64% -100%; white-space: nowrap; }
-.hero-juan .bubble::after { left: 58%; }
+.hero-juan .bubble { --tail: 58%; }
 .hero-reel { position: relative; margin: 0; width: min(290px, 64vw); z-index: 2; }
 .hero-reel-badge { position: absolute; top: -14px; left: 16px; z-index: 3; }
 .hero-reel figcaption { margin-top: 18px; font-weight: 700; line-height: 1.3; }
@@ -566,6 +575,7 @@ select.sort { min-height: 46px; border-radius: 999px; border: 3px solid var(--li
 .drawer nav a:hover { border-color: var(--line); }
 .drawer nav a[aria-current="page"] { background: var(--juan-yellow); color: var(--juan-navy); }
 .drawer-follow { display: grid; gap: 10px; }
+.drawer-more { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .drawer-juan { margin-top: auto; display: flex; align-items: flex-end; gap: 10px; color: var(--text-2); font-weight: 600; }
 .drawer-juan p { margin: 0 0 18px; }
 @media (max-width: 760px) {
@@ -583,6 +593,9 @@ select.sort { min-height: 46px; border-radius: 999px; border: 3px solid var(--li
   border: 4px solid #000a; border-radius: 20px; padding: 18px 22px 0 14px; box-shadow: 0 8px 0 #000a; overflow: hidden; margin-bottom: -10px; }
 .foot-cta-text { display: grid; padding-bottom: 20px; }
 .foot-cta-text strong { font-size: 1.2rem; line-height: 1.25; }
+/* The home page already has the big follow card just above the footer; don't repeat the same buttons. */
+body:has(.follow-card) .foot-cta { display: none; }
+body:has(.follow-card) .site-footer { margin-top: 24px; padding-top: 44px; }
 .foot-cta-btns { display: flex; gap: 10px; flex-wrap: wrap; padding-bottom: 18px; }
 .foot-juan { margin-bottom: -6px; }
 .foot-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 32px; padding-top: 6px; }
@@ -604,15 +617,16 @@ select.sort { min-height: 46px; border-radius: 999px; border: 3px solid var(--li
   .foot-juan { display: none; }
   .foot-cta-text { padding-bottom: 0; }
   .foot-cta-btns .btn { flex: 1 1 100%; }
+  .foot-cta-btns .btn-ig, .foot-cta-btns .btn-tt { flex-basis: calc(50% - 5px); min-width: 0; }
 }
 @media (max-width: 420px) { .foot-grid { grid-template-columns: 1fr; } }
 :root[data-theme="light"] .site-footer { background: var(--juan-navy); }
 .site-footer .btn-white, .site-footer .btn-white:hover { color: var(--juan-navy); text-decoration: none; }
-.site-footer .btn-fb, .site-footer .btn-fb:hover { color: #fff; text-decoration: none; }
+.site-footer .btn-fb, .site-footer .btn-fb:hover, .site-footer .btn-ig, .site-footer .btn-ig:hover, .site-footer .btn-tt, .site-footer .btn-tt:hover { color: #fff; text-decoration: none; }
 .drawer .btn-white { color: var(--juan-navy); }
 @media (max-width: 600px) {
   .hero-juan .bubble { left: 4px; translate: 0 -100%; }
-  .hero-juan .bubble::after { left: 40%; }
+  .hero-juan .bubble { --tail: 40%; }
 }
 
 /* ==========================================================================
@@ -719,7 +733,7 @@ select.sort { min-height: 46px; border-radius: 999px; border: 3px solid var(--li
 .lang-toggle button[aria-pressed="true"] { color: var(--juan-navy); cursor: default; }
 .lang-toggle button:not([aria-pressed="true"]):hover { color: var(--juan-yellow); }
 :root[data-theme="light"] .lang-toggle button:not([aria-pressed="true"]):hover { color: var(--juan-red); }
-.lang-thumb { position: absolute; z-index: 0; top: 4px; bottom: 4px; left: 4px; width: calc(50% - 4px); border-radius: 999px; background: var(--juan-yellow); box-shadow: 0 2px 0 var(--juan-navy-deep); transition: translate .35s var(--ease-spring, ease); }
+.lang-thumb { position: absolute; z-index: 0; top: 4px; bottom: 4px; left: 4px; width: calc(50% - 4px); border-radius: 999px; background: var(--juan-yellow); box-shadow: 0 2px 0 var(--juan-navy-deep); transition: translate .35s var(--ease-spring, ease); will-change: translate; }
 .lang-toggle[data-lang="en"] .lang-thumb { translate: 100% 0; }
 .lang-toggle.is-pending .lang-thumb { animation: lang-pulse .8s ease-in-out infinite; }
 @keyframes lang-pulse { 50% { opacity: .65; } }
