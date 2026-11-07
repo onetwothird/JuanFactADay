@@ -1,0 +1,19 @@
+{
+ "title": "Where Did the Jeepney Really Come From?",
+ "big_number_label": "is what Leonardo Sarao borrowed to start Sarao Motors",
+ "takeaways": [
+  "The jeepney comes from the military jeeps the Americans left behind after World War II.",
+  "'Jeepney' is a blend of 'jeep' and 'jitney', an American word for a cheap passenger vehicle.",
+  "'Para po!' comes from the Spanish 'parar', which means to stop."
+ ],
+ "quiz": [
+  { "q": "Where does the word 'Para' that we say on the jeep come from?", "options": ["Spanish 'parar'", "English 'park'", "Tagalog 'parada'"] },
+  { "q": "What was Leonardo Sarao's job before he built jeepneys?", "options": ["Police officer", "Horse-carriage driver (kutsero)", "Teacher"] },
+  { "q": "Which two words were combined to make 'jeepney'?", "options": ["Jeep and journey", "Jeep and jitney", "Jeep and money"] }
+ ],
+ "paragraphs": [
+  "Do you know where the jeepney, the King of the Road, really came from? After World War II, the Americans left a huge number of military jeeps behind in the Philippines. Filipinos didn't let them go to waste. They stretched the body, added a roof and seats, and painted them in bright colors to turn them into passenger vehicles.",
+  "That's why it's called a jeepney: a blend of jeep and jitney, an American word for a cheap passenger vehicle. And did you know? A former kutsero, or horse-carriage driver, named Leonardo Sarao started Sarao Motors with just seven hundred pesos he had borrowed! He stretched the jeep even further so it could carry twice the passengers. And their trademark? The horse ornament on the hood!",
+  "Then there's Anastacio Francisco, a former kalesa painter who worked for Sarao before building his own company, Francisco Motors. But do you know where \"Para po\" comes from? From the Spanish word parar, which means to stop. And \"Bayad po\", the fare passed hand to hand from the back all the way to the driver. That's how strong Filipino trust is!"
+ ]
+}
