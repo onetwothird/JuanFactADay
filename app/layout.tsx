@@ -33,6 +33,9 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: { siteName: SITE.name, locale: lang === "en" ? "en_PH" : "fil_PH", type: "website" },
     twitter: { card: "summary_large_image" },
     alternates: { types: { "application/rss+xml": "/rss.xml" } },
+    // The site has its own FIL/EN switch. Browser auto-translate (Chrome's Google Translate) would
+    // otherwise rewrite the Filipino text into English and fight React when the language changes.
+    other: { google: "notranslate" },
   };
 }
 
@@ -45,7 +48,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const lang = await getLang();
   const t = tr(lang);
   return (
-    <html lang={lang === "en" ? "en" : "fil"} className={poppins.variable} data-scroll-behavior="smooth" suppressHydrationWarning>
+    <html lang={lang === "en" ? "en" : "fil"} translate="no" className={poppins.variable} data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script dangerouslySetInnerHTML={{ __html: preloadHeadScript }} />
