@@ -31,6 +31,12 @@ export default async function Footer() {
             <a className="btn btn-white btn-sm" href={SITE.messenger} target="_blank" rel="noopener">
               Messenger
             </a>
+            <a className="btn btn-ig btn-sm" href={SITE.instagram} target="_blank" rel="noopener">
+              Instagram
+            </a>
+            <a className="btn btn-tt btn-sm" href={SITE.tiktok} target="_blank" rel="noopener">
+              TikTok
+            </a>
           </div>
         </div>
 
