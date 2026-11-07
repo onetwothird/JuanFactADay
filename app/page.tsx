@@ -195,12 +195,21 @@ export default async function Home() {
                   </svg>
                   {t.nav.messageJuan}
                 </a>
+                <a className="btn btn-ig" href={SITE.instagram} target="_blank" rel="noopener">
+                  <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden>
+                    <rect x="3" y="3" width="18" height="18" rx="5.5" fill="none" stroke="currentColor" strokeWidth="2.2" />
+                    <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" strokeWidth="2.2" />
+                    <circle cx="17.3" cy="6.7" r="1.3" fill="currentColor" />
+                  </svg>
+                  Instagram
+                </a>
+                <a className="btn btn-tt" href={SITE.tiktok} target="_blank" rel="noopener">
+                  <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden>
+                    <path fill="currentColor" d="M16.6 2h-3.4v13.3a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9a6.4 6.4 0 1 0 5.4 6.3V8.6a7.6 7.6 0 0 0 4.4 1.4V6.6a4.4 4.4 0 0 1-4.4-4.6z" />
+                  </svg>
+                  TikTok
+                </a>
               </div>
-              <p className="soon-line">
-                <span className="soon-chip">Instagram</span>
-                <span className="soon-chip">TikTok</span>
-                <span>{h.soon}</span>
-              </p>
             </div>
             <Juan pose="sign" sign={h.sign} size={230} title={h.juanSign} className="follow-juan" />
           </div>
