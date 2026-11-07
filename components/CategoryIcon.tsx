@@ -62,6 +62,15 @@ export default function CategoryIcon({ slug, size = 28 }: { slug: string; size?:
           <circle cx="32" cy="20" r="3.5" fill={N} />
         </svg>
       );
+    case "misteryo": // magnifying glass with a question mark
+      return (
+        <svg {...common}>
+          <path d="M40 40 L56 56" stroke={N} strokeWidth={9} strokeLinecap="round" />
+          <circle cx="27" cy="27" r="19" fill="#DCE6FF" stroke={N} strokeWidth={sw} />
+          <path d="M21 22 q0 -8 7 -8 q7 0 7 6 q0 5 -6 7 v4" fill="none" stroke="#7B4BB7" strokeWidth={4.5} strokeLinecap="round" />
+          <circle cx="29" cy="38" r="2.8" fill="#7B4BB7" />
+        </svg>
+      );
     default: // tao — kalasag (shield)
       return (
         <svg {...common}>
