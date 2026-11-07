@@ -6,9 +6,12 @@ import Juan from "./Juan";
 import ThemeToggle from "./ThemeToggle";
 import LangToggle from "./LangToggle";
 import { useLang } from "./LangProvider";
+import { SITE } from "@/lib/util";
 
 const FB = "https://www.facebook.com/juanfactaday";
 const MSG = "https://m.me/juanfactaday";
+const IG = SITE.instagram;
+const TT = SITE.tiktok;
 
 
 export default function Header() {
@@ -126,7 +129,14 @@ export default function Header() {
                   <b>Messenger</b>
                   <small>{t.nav.msgSub}</small>
                 </a>
-                <span className="soon">{t.nav.soon}</span>
+                <a role="menuitem" href={IG} target="_blank" rel="noopener">
+                  <b>Instagram</b>
+                  <small>{t.nav.igSub}</small>
+                </a>
+                <a role="menuitem" href={TT} target="_blank" rel="noopener">
+                  <b>TikTok</b>
+                  <small>{t.nav.ttSub}</small>
+                </a>
               </div>
             )}
           </div>
@@ -162,6 +172,14 @@ export default function Header() {
           <a className="btn btn-white" href={MSG} target="_blank" rel="noopener">
             {t.nav.messageJuan}
           </a>
+          <div className="drawer-more">
+            <a className="btn btn-white btn-sm" href={IG} target="_blank" rel="noopener">
+              Instagram
+            </a>
+            <a className="btn btn-white btn-sm" href={TT} target="_blank" rel="noopener">
+              TikTok
+            </a>
+          </div>
         </div>
         <div className="drawer-juan">
           <Juan pose="wave" size={110} title="" />
