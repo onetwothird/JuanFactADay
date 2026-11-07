@@ -8,6 +8,7 @@ export const CATEGORIES = [
   { slug: "hayop", label: "Hayop at Kalikasan", short: "HAYOP", en: "Animals and Nature", enShort: "NATURE" },
   { slug: "wika", label: "Wika", short: "WIKA", en: "Language", enShort: "LANGUAGE" },
   { slug: "tao", label: "Mga Bayani at Tao", short: "TAO", en: "Heroes and People", enShort: "PEOPLE" },
+  { slug: "misteryo", label: "Misteryo", short: "MISTERYO", en: "Mystery", enShort: "MYSTERY" },
 ] as const;
 
 export type CategorySlug = (typeof CATEGORIES)[number]["slug"];
