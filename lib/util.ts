@@ -14,7 +14,7 @@ export const SITE = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://juanfactaday.vercel.app",
   facebook: "https://www.facebook.com/juanfactaday",
   messenger: "https://m.me/juanfactaday",
-  instagram: "",
-  tiktok: "",
+  instagram: "https://www.instagram.com/juanfactaday/",
+  tiktok: "https://www.tiktok.com/@juanfactaday",
   formspree: process.env.NEXT_PUBLIC_FORMSPREE_ID ?? "",
 };
