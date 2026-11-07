@@ -1,0 +1,60 @@
+{
+ "number": 3,
+ "slug": "yuba-county-five",
+ "title": "Ang Misteryo ng Yuba County Five",
+ "category": "misteryo",
+ "tags": [
+  "yuba county five",
+  "unsolved mystery",
+  "misteryo",
+  "true crime",
+  "california",
+  "1978",
+  "gary mathias",
+  "plumas national forest",
+  "hindi pa nalulutas"
+ ],
+ "published": "2026-11-07",
+ "verified": "2026-11-07",
+ "big_number": "36",
+ "big_number_label": "lata ng C-ration ang kinain, pero ang pagkaing pang-isang taon sa locker, hindi binuksan",
+ "takeaways": [
+  "Noong February 24, 1978, limang magkakaibigan mula Yuba County, California ang nanood ng basketball sa Chico, at hindi na nakauwi.",
+  "Natagpuan ang kotse nila sa bundok ng Plumas National Forest, umaandar pa at may gas. Apat sa kanila ang natagpuang patay.",
+  "Si Gary Mathias, ang ikalima, hanggang ngayon ay hindi pa natatagpuan. Hindi pa rin nalulutas ang kaso."
+ ],
+ "quiz": [
+  {
+   "q": "Saan natagpuan ang kotse ng Yuba County Five?",
+   "options": [
+    "Sa Plumas National Forest",
+    "Sa parking ng Chico State",
+    "Sa tabi ng bahay nila sa Yuba City"
+   ],
+   "answer": 0
+  },
+  {
+   "q": "Ilang lata ng C-ration ang nakitang binuksan at kinain sa labas ng trailer?",
+   "options": [
+    "12",
+    "36",
+    "100"
+   ],
+   "answer": 1
+  },
+  {
+   "q": "Sino sa lima ang hanggang ngayon ay hindi pa natatagpuan?",
+   "options": [
+    "Ted Weiher",
+    "Jack Madruga",
+    "Gary Mathias"
+   ],
+   "answer": 2
+  }
+ ],
+ "links": {
+  "facebook": "https://www.facebook.com/juanfactaday",
+  "video": "/videos/yuba-county-five.mp4"
+ },
+ "duration": 280
+}
