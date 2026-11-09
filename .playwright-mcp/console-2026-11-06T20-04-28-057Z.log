@@ -1,8 +1,0 @@
-[   74635ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://juanfactaday.vercel.app/favicon.ico:0
-[  104029ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3123/_vercel/insights/script.js:0
-[  104030ms] [LOG] [Vercel Web Analytics] Failed to load script from /_vercel/insights/script.js. Be sure to enable Web Analytics for your project and deploy again. See https://vercel.com/docs/analytics/quickstart for more information. @ http://localhost:3123/_next/static/chunks/app/layout-03085e5c69c31746.js:0
-[  113163ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3123/_vercel/insights/script.js:0
-[  113163ms] [LOG] [Vercel Web Analytics] Failed to load script from /_vercel/insights/script.js. Be sure to enable Web Analytics for your project and deploy again. See https://vercel.com/docs/analytics/quickstart for more information. @ http://localhost:3123/_next/static/chunks/app/layout-03085e5c69c31746.js:0
-[  126401ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3123/_vercel/insights/script.js:0
-[  126401ms] [LOG] [Vercel Web Analytics] Failed to load script from /_vercel/insights/script.js. Be sure to enable Web Analytics for your project and deploy again. See https://vercel.com/docs/analytics/quickstart for more information. @ http://localhost:3123/_next/static/chunks/app/layout-03085e5c69c31746.js:0
-[  127953ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3123/favicon.ico:0
