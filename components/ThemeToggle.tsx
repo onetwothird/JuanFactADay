@@ -2,9 +2,6 @@
 import { useEffect, useState } from "react";
 import { useLang } from "./LangProvider";
 
-/* Light/dark switch with a circular "reveal" from the button (View Transitions API),
-   and a sun→moon icon morph. Falls back to an instant switch in older browsers
-   and when the user prefers reduced motion. */
 export default function ThemeToggle() {
   const [light, setLight] = useState(false);
   const { t } = useLang();
