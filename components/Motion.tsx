@@ -1,22 +1,8 @@
 "use client";
-/* Site-wide motion, mounted once in the root layout.
-
-   1. Page transitions (in + out): internal link clicks run inside document.startViewTransition,
-      so the old page lifts/fades out while the new one fades in (CSS: ::view-transition-*(page)).
-      Browsers without the API just navigate normally; the reveal cascade below still plays.
-   2. Scroll reveal (in + out): content blocks rise into place as they enter the viewport, and
-      reset once they have fully left it, so they animate in again next time.
-
-   Nothing here writes attributes, classes or inline styles onto page elements. Parts of a page can
-   hydrate late (anything under <Suspense>, e.g. the suggest form), and React reports any attribute it
-   didn't render as a hydration mismatch. So state lives in a WeakMap and the visuals are Web
-   Animations (element.animate), which never touch the DOM attributes React compares.
-   Everything is skipped under prefers-reduced-motion. */
 
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";
 
-// Content blocks that animate. Only "leaf" matches are used, so a container and its children never both move.
 const SEL = [
   "main .wrap > *",
   "main .prose > *",
@@ -27,12 +13,11 @@ const SEL = [
   ".site-footer .foot-grid > *",
 ].join(",");
 
-// Routes that are handlers/files, not pages: let the browser load them normally.
 const NOT_PAGES = /^\/(random|rss\.xml|sitemap\.xml|robots\.txt)(\/|$)|\.\w+$/;
 
 const EASE_OUT = "cubic-bezier(.16, .84, .3, 1)";
 const EASE_IN = "cubic-bezier(.5, 0, .75, 0)";
-const RISE = 28; // px the content rises from
+const RISE = 28; 
 
 const reduced = () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const preloading = () => {
@@ -49,20 +34,19 @@ export default function Motion() {
   const finishNav = useRef<(() => void) | null>(null);
   const firstPath = useRef(true);
 
-  // ---- scroll reveal ----
   useEffect(() => {
     if (reduced() || !("IntersectionObserver" in window) || !("animate" in Element.prototype)) return;
 
     const tracked = new WeakMap<Element, Track>();
     let queued: HTMLElement[] = [];
     const TOP = 0.08,
-      BOTTOM = 0.06; // enter band; keep in sync with the enter observer's rootMargin
+      BOTTOM = 0.06; 
 
     const isTarget = (el: HTMLElement) => {
-      if (tracked.has(el) || el.querySelector(SEL)) return false; // already tracked, or not a leaf
-      if (el.tagName === "HR") return false; // thin decorative rules: nothing to reveal
+      if (tracked.has(el) || el.querySelector(SEL)) return false;
+      if (el.tagName === "HR") return false; 
       if (el.closest("dialog, [role='dialog'], [data-no-reveal]")) return false;
-      if (!el.getClientRects().length) return false; // display:none
+      if (!el.getClientRects().length) return false; 
       const pos = getComputedStyle(el).position;
       return pos !== "fixed" && pos !== "sticky";
     };
