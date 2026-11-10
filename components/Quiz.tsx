@@ -9,7 +9,7 @@ import { useLang } from "./LangProvider";
 export type QuizItem = { q: string; options: string[]; answer: number; slug: string; title: string };
 
 const N = 5;
-const SWAP_MS = 780; // full out → in sequence; keep ≥ the longest .quiz-card.is-entering animation in globals.css
+const SWAP_MS = 780; 
 
 function shuffle<T>(a: T[]) {
   const r = [...a];
@@ -27,7 +27,6 @@ function verdict(score: number, total: number, v: Dict["quiz"]["v"]) {
   return v.low;
 }
 
-/* Counts 0 → value once mounted (ease-out), for the big score number. */
 function useCountUp(value: number, ms = 900, delay = 350) {
   const [n, setN] = useState(0);
   useEffect(() => {
@@ -169,7 +168,6 @@ export default function Quiz({ pool }: { pool: QuizItem[] }) {
 
   const nextQ = () => {
     if (i + 1 >= total) {
-      // keep the results panel at least as tall as the quiz was, so the page doesn't jump
       setLockH(panelRef.current?.offsetHeight);
       setDone(true);
       try {
