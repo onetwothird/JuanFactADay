@@ -1,11 +1,10 @@
-/* Small hand-drawn style icons (flat, thick navy outline) instead of emoji. */
 const N = "#0A1640";
 const sw = 5;
 
 export default function CategoryIcon({ slug, size = 28 }: { slug: string; size?: number }) {
   const common = { width: size, height: size, viewBox: "0 0 64 64", "aria-hidden": true } as const;
   switch (slug) {
-    case "kasaysayan": // salakot
+    case "kasaysayan":
       return (
         <svg {...common}>
           <path d="M6 40 L32 12 L58 40 Z" fill="#E9B65C" stroke={N} strokeWidth={sw} strokeLinejoin="round" />
