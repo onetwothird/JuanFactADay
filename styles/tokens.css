@@ -1,4 +1,3 @@
-/* Juan Fact a Day — design tokens (§2.2 / §2.3 of the spec). Match the videos exactly. */
 :root {
   --juan-yellow: #ffc72c;
   --juan-yellow-dark: #c9961a;
@@ -16,8 +15,6 @@
   --cream: #fff8e7;
   --paper: #fffdf6;
   --ink-line: #b9cbe8;
-
-  /* theme (dark is default — matches the videos) */
   --bg: var(--juan-navy);
   --bg-2: #13214a;
   --text: var(--juan-white);
