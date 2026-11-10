@@ -20,8 +20,6 @@ export type ReelItem = {
 const pad = (n: number) => `#${String(n).padStart(3, "0")}`;
 const mmss = (s: number | null) => (s ? `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, "0")}` : "");
 
-/* Horizontal, snap-scrolling shelf of Reels. Tapping one opens a full-screen vertical viewer
-   (like Reels) with prev/next, keyboard arrows, swipe and Esc. */
 export default function ReelShelf({ reels, layout = "shelf" }: { reels: ReelItem[]; layout?: "shelf" | "grid" }) {
   const { t } = useLang();
   const [open, setOpen] = useState<number | null>(null);
