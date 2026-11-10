@@ -2,8 +2,6 @@
 import Image from "next/image";
 import { useState } from "react";
 
-/* Shows the video's scene cards one by one (no autoplay). If a video URL exists,
-   the first frame becomes a click-to-load facade so nothing heavy loads up front. */
 export default function FlipViewer({ cards, title, videoUrl }: { cards: string[]; title: string; videoUrl?: string }) {
   const [i, setI] = useState(0);
   const [playing, setPlaying] = useState(false);
