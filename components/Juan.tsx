@@ -1,18 +1,3 @@
-/* Juan — full-body mascot drawn as inline SVG, with poses that match the context.
-   Hands are rounded "mitten" hands on purpose (no single raised fingers, ever).
-
-   Poses:
-   - wave     → hero greeting
-   - stand    → hands on hips, confident
-   - thinking → hand on chin, bulb off (quiz question, empty states, 404)
-   - excited  → both arms up, jumping (correct answer, success)
-   - oops     → hands on cheeks, sweat drop, bulb off (wrong answer, errors)
-   - read     → holding an open book (archive, "Ang Kwento")
-   - magnify  → magnifying glass (sources / fact-checking)
-   - sign     → holding a sign with custom text (about, CTAs)
-   - peek     → head only (logo, corner peek)
-*/
-
 import type * as React from "react";
 
 export type JuanPose = "wave" | "stand" | "thinking" | "excited" | "oops" | "read" | "magnify" | "sign" | "peek";
@@ -39,10 +24,6 @@ function Arm({ from, mid, to, hand = 0, sleeve = true, open = false }: { from: P
 
 function Hand({ at, rot, open = false }: { at: Pt; rot: number; open?: boolean }) {
   if (open) {
-    // Open palm facing the viewer (waving). Local space: wrist at (0,0), fingers point up (−y).
-    // The thumb sits on the −x side, i.e. toward the head when raised on Juan's left.
-    // Drawn as one silhouette: an outline pass (thick navy strokes) then a fill pass on top,
-    // so the palm, fingers and thumb read as a single hand with no inner seams.
     const parts = (
       <>
         <path d="M-30 -14 C-32 -40 -28 -62 -2 -64 C26 -66 34 -46 32 -20 C30 0 18 6 0 6 C-18 6 -28 2 -30 -14 Z" />
