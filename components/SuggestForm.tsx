@@ -15,7 +15,6 @@ export default function SuggestForm({ formspreeId, messenger }: { formspreeId: s
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     if (!formspreeId) {
-      // No form backend set up yet: hand the suggestion to Messenger, pre-filled.
       const lines = [
         `${s.msgLines.topic}: ${data.get("topic")}`,
         data.get("bakit") ? `${s.msgLines.why}: ${data.get("bakit")}` : "",
