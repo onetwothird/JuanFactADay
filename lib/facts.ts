@@ -69,9 +69,12 @@ function parseCaption(raw: string): { caption: string; sources: Source[] } {
 }
 
 let cache: Fact[] | null = null;
+// In dev the admin page edits content while the server runs, so always re-read it.
+const DEV = process.env.NODE_ENV === "development";
 
 export function getAllFacts(): Fact[] {
-  if (cache) return cache;
+  if (cache && !DEV) return cache;
+  english.clear();
   const folders = fs
     .readdirSync(STORIES_DIR, { withFileTypes: true })
     .filter((d) => d.isDirectory())
@@ -168,7 +171,7 @@ export function getFacts(lang: Lang): Fact[] {
   const base = getAllFacts();
   if (lang === "fil") return base;
   const hit = byLang.get(lang);
-  if (hit) return hit;
+  if (hit && !DEV) return hit;
   const list = base.map((f) => {
     const e = english.get(f.slug);
     if (!e) return f;
