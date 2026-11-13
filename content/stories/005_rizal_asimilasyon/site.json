@@ -1,0 +1,63 @@
+{
+ "number": 5,
+ "slug": "rizal-probinsya-ng-espanya",
+ "title": "Gusto ba ni Rizal na maging probinsya ng Espanya ang Pilipinas?",
+ "category": "kasaysayan",
+ "tags": [
+  "jose rizal",
+  "asimilasyon",
+  "kilusang propaganda",
+  "la solidaridad",
+  "cortes",
+  "marcelo h. del pilar",
+  "mariano ponce",
+  "noli me tangere",
+  "el filibusterismo",
+  "filipinas dentro de cien años",
+  "ilustrado",
+  "1889"
+ ],
+ "published": "2026-11-13",
+ "verified": "2026-11-13",
+ "big_number": "1837",
+ "big_number_label": "ang taon na inalis ang mga kinatawan ng Pilipinas sa Cortes, ang parlamento ng Espanya",
+ "takeaways": [
+  "Isa sa mga isinulong ng Kilusang Propaganda, kasama si Rizal, ang asimilasyon: gawing ganap na probinsya ng Espanya ang Pilipinas para pantay ang karapatan ng Pilipino at Espanyol.",
+  "Kasama sa hiningi nila ang muling pagkakaroon ng kinatawan sa Cortes, kalayaan sa pamamahayag, at pantay na pagtrato sa ilalim ng batas. Ipinaglaban nila ito sa pahayagang La Solidaridad.",
+  "Hindi ito pagtalikod sa pagka-Pilipino. Sa sanaysay na Filipinas dentro de cien años, nagbabala pa si Rizal na maaaring humiwalay ang Pilipinas kung hindi makikinig ang Espanya."
+ ],
+ "quiz": [
+  {
+   "q": "Ano ang tawag sa panukalang gawing probinsya ng Espanya ang Pilipinas?",
+   "options": [
+    "Asimilasyon",
+    "Sekularisasyon",
+    "Rebolusyon"
+   ],
+   "answer": 0
+  },
+  {
+   "q": "Ano ang Cortes?",
+   "options": [
+    "Ang hukbo ng Espanya",
+    "Ang parlamento ng Espanya",
+    "Isang pahayagan sa Maynila"
+   ],
+   "answer": 1
+  },
+  {
+   "q": "Ano ang pangalan ng pahayagan ng mga repormista, na itinatag sa Barcelona noong 1889?",
+   "options": [
+    "El Renacimiento",
+    "Kalayaan",
+    "La Solidaridad"
+   ],
+   "answer": 2
+  }
+ ],
+ "links": {
+  "facebook": "https://www.facebook.com/juanfactaday",
+  "video": "/videos/rizal-probinsya-ng-espanya.mp4"
+ },
+ "duration": 110
+}
