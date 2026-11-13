@@ -1,0 +1,458 @@
+{
+ "extends": "../../channel.json",
+ "title": "Rizal at ang Asimilasyon",
+ "output": {
+  "path": "005_rizal_asimilasyon.mp4",
+  "aspect": "9:16"
+ },
+ "voices": {
+  "narrator": {
+   "engine": "edge",
+   "voice": "fil-PH-AngeloNeural",
+   "rate": "+8%",
+   "pitch": "-2Hz"
+  }
+ },
+ "defaults": {
+  "max_pause": 0.35
+ },
+ "music": {
+  "path": "audio/score.wav",
+  "volume": 0.13
+ },
+ "scenes": [
+  {
+   "image": "cards/01_hook.jpg",
+   "background": "cards/_plate_01_hook.jpg",
+   "card": {
+    "photo": "photos/rizal_full.jpg",
+    "photo_mode": "frame",
+    "safe_bottom": 1330,
+    "photo_w": 760,
+    "badge": "ALAM MO BA?",
+    "headline": "Gusto ni *Rizal*...",
+    "headline_size": 92,
+    "sub": "na maging probinsya ng Espanya ang Pilipinas?"
+   },
+   "sfx": [
+    {
+     "path": "audio/boom.wav",
+     "at": 0,
+     "volume": 0.2
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Alam mo ba na gusto ni José Rizal na maging probinsya ng Espanya ang Pilipinas?",
+     "say": "Alam mo ba na gusto ni Hosé Rizal na maging probinsya ng Espanya ang Pilipinas?"
+    }
+   ]
+  },
+  {
+   "image": "cards/01b_hangarin.jpg",
+   "background": "cards/_plate_01b_hangarin.jpg",
+   "card": {
+    "photo": "photos/rizal_full.jpg",
+    "photo_mode": "full",
+    "photo_focus": [
+     0.5,
+     0.0
+    ],
+    "top": 860,
+    "badge": "ANG HANGARIN NI RIZAL?",
+    "headline": "Pilipinas bilang *probinsya ng Espanya?*",
+    "headline_size": 80
+   },
+   "sfx": [
+    {
+     "path": "audio/boom.wav",
+     "at": 0,
+     "volume": 0.12
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Oo, tama ang narinig mo!"
+    },
+    {
+     "speaker": "narrator",
+     "text": "Pero bakit niya gugustuhing mapasailalim tayo sa Espanya? Hindi ba't ipinaglaban niya ang mga Pilipino?",
+     "pause_after": 0.6
+    }
+   ]
+  },
+  {
+   "image": "cards/02_maynila.jpg",
+   "background": "cards/_plate_02_maynila.jpg",
+   "card": {
+    "photo": "photos/puerta_real.jpg",
+    "photo_mode": "full",
+    "photo_focus": [
+     0.45,
+     0.5
+    ],
+    "top": 860,
+    "badge": "IKA-19 NA SIGLO",
+    "headline": "Kolonya ng *Espanya*",
+    "headline_size": 92,
+    "sub": "Maynila, sa ilalim ng Espanya"
+   },
+   "sfx": [
+    {
+     "path": "../../assets/sfx/whoosh.wav",
+     "at": 0,
+     "volume": 0.05
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Noong ika-19 na siglo, nasa ilalim ng kapangyarihan ng Espanya ang Pilipinas.",
+     "say": "Noong ikalabinsiyam na siglo, nasa ilalim ng kapangyarihan ng Espanya ang Pilipinas."
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "image": "cards/03_hindi_pantay.jpg",
+   "background": "cards/_plate_03_hindi_pantay.jpg",
+   "card": {
+    "photo": "photos/peasant_asuncion.jpg",
+    "photo_mode": "frame",
+    "safe_bottom": 1330,
+    "photo_w": 440,
+    "badge": "ANG KALAGAYAN",
+    "headline": "*Hindi pantay* na karapatan",
+    "headline_size": 84,
+    "sub": "Limitadong representasyon"
+   },
+   "sfx": [
+    {
+     "path": "audio/transition.wav",
+     "at": 0,
+     "volume": 0.06
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Pero hindi pantay ang trato sa mga Pilipino at sa mga Espanyol."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Maraming Pilipino ang walang sapat na karapatan, at walang boses sa pamahalaan."
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "image": "cards/04_1837.jpg",
+   "card": {
+    "badge": "AT ALAM MO RIN BA?",
+    "big": "1837",
+    "headline": "*Inalis* ang mga kinatawan ng Pilipinas",
+    "sub": "sa Cortes, ang parlamento ng Espanya"
+   },
+   "sfx": [
+    {
+     "path": "../../assets/sfx/whoosh.wav",
+     "at": 0,
+     "volume": 0.05
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "At alam mo rin ba? Dati, may mga kinatawan ang Pilipinas sa Cortes, ang parlamento ng Espanya."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Pero noong 1837, inalis sila. Kaya wala nang boses ang mga Pilipino sa Madrid.",
+     "say": "Pero noong eighteen thirty-seven, inalis sila. Kaya wala nang boses ang mga Pilipino sa Madrid."
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "image": "cards/05_propaganda.jpg",
+   "background": "cards/_plate_05_propaganda.jpg",
+   "card": {
+    "photo": "photos/ilustrados_1890.jpg",
+    "photo_mode": "full",
+    "photo_focus": [
+     0.5,
+     0.15
+    ],
+    "top": 860,
+    "badge": "KILUSANG PROPAGANDA",
+    "headline": "Rizal, del Pilar at Ponce",
+    "headline_size": 78,
+    "sub": "Mga repormistang Pilipino sa Espanya, 1890"
+   },
+   "sfx": [
+    {
+     "path": "../../assets/sfx/whoosh.wav",
+     "at": 0,
+     "volume": 0.05
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Kaya si Rizal, kasama ang iba pang repormistang Pilipino sa Espanya, tulad nina Marcelo H. del Pilar at Mariano Ponce, ay nanawagan ng reporma.",
+     "say": "Kaya si Rizal, kasama ang iba pang repormistang Pilipino sa Espanya, tulad nina Marcelo H. del Pilar at Mariano Pon-se, ay nanawagan ng reporma."
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "image": "cards/06_asimilasyon.jpg",
+   "card": {
+    "badge": "ANG KANILANG PANUKALA",
+    "big": "ASIMILASYON",
+    "big_size": 150,
+    "headline": "Gawing *probinsya ng Espanya* ang Pilipinas",
+    "sub": "Para pantay ang karapatan ng Pilipino at Espanyol"
+   },
+   "sfx": [
+    {
+     "path": "audio/boom.wav",
+     "at": 0,
+     "volume": 0.14
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Ang isa sa pinakamahalaga nilang panukala? Ang tinatawag na asimilasyon."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Gawing ganap na probinsya ng Espanya ang Pilipinas, para magkaroon ang mga Pilipino ng parehong karapatan tulad ng mga Espanyol."
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "image": "cards/07_cortes.jpg",
+   "background": "cards/_plate_07_cortes.jpg",
+   "card": {
+    "photo": "photos/cortes_1869.jpg",
+    "photo_mode": "full",
+    "photo_focus": [
+     0.5,
+     0.5
+    ],
+    "top": 800,
+    "badge": "ANG HININGI NILA",
+    "headline": "Representasyon sa *Cortes*",
+    "headline_size": 84,
+    "sub": "Kalayaan sa pamamahayag · Pantay sa batas"
+   },
+   "sfx": [
+    {
+     "path": "audio/transition.wav",
+     "at": 0,
+     "volume": 0.06
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Kasama rito ang muling pagkakaroon ng kinatawan sa Cortes, kalayaan sa pamamahayag, at pantay na pagtrato sa ilalim ng batas."
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "image": "cards/08_solidaridad.jpg",
+   "background": "cards/_plate_08_solidaridad.jpg",
+   "card": {
+    "badge": "BARCELONA, 1889",
+    "headline": "Ang pahayagang *La Solidaridad*",
+    "sub": "Panulat ang kanilang sandata, hindi armas",
+    "photo": "photos/la_solidaridad.jpg",
+    "photo_mode": "frame",
+    "safe_bottom": 1330,
+    "photo_w": 480
+   },
+   "sfx": [
+    {
+     "path": "../../assets/sfx/whoosh.wav",
+     "at": 0,
+     "volume": 0.05
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Ipinaglaban nila ito sa sarili nilang pahayagan, ang La Solidaridad. Panulat ang sandata nila, hindi armas."
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "image": "cards/09_teka.jpg",
+   "background": "cards/_plate_09_teka.jpg",
+   "card": {
+    "photo": "photos/rizal_full.jpg",
+    "photo_mode": "full",
+    "photo_focus": [
+     0.5,
+     0.0
+    ],
+    "top": 860,
+    "badge": "PERO TEKA!",
+    "headline": "*Hindi* pagkawala ng pagkakakilanlan",
+    "headline_size": 76,
+    "sub": "Kundi pagkakapantay-pantay"
+   },
+   "sfx": [
+    {
+     "path": "../../assets/sfx/whoosh.wav",
+     "at": 0,
+     "volume": 0.05
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Pero teka! Hindi ibig sabihin nito na gusto ni Rizal na mawala ang pagkakakilanlan ng mga Pilipino."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Ang nais niya: pantay na karapatan, dignidad, at pagkilala sa mga Pilipino bilang mamamayang hindi dapat tratuhing mababa."
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "image": "cards/10_nobela.jpg",
+   "background": "cards/_plate_10_nobela.jpg",
+   "card": {
+    "photo": "photos/noli_fili.jpg",
+    "photo_mode": "frame",
+    "safe_bottom": 1330,
+    "photo_w": 820,
+    "badge": "1887 · 1891",
+    "headline": "Inilantad niya ang *pang-aabuso*",
+    "headline_size": 80,
+    "sub": "Noli Me Tangere · El Filibusterismo"
+   },
+   "sfx": [
+    {
+     "path": "audio/transition.wav",
+     "at": 0,
+     "volume": 0.06
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Kaya sa mga nobela niyang Noli Me Tangere at El Filibusterismo, inilantad niya ang pang-aabuso sa kolonya.",
+     "say": "Kaya sa mga nobela niyang Noli Me Tanghere at El Filibusterismo, inilantad niya ang pang-aabuso sa kolonya."
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "image": "cards/11_babala.jpg",
+   "background": "cards/_plate_11_babala.jpg",
+   "card": {
+    "photo": "photos/rizal_1891.jpg",
+    "photo_mode": "frame",
+    "safe_bottom": 1330,
+    "photo_w": 560,
+    "badge": "AT HETO PA!",
+    "headline": "*Nagbabala* si Rizal",
+    "sub": "Filipinas dentro de cien años, 1889–1890"
+   },
+   "sfx": [
+    {
+     "path": "../../assets/sfx/ding.wav",
+     "at": 0,
+     "volume": 0.07
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "At heto pa! Sa sanaysay niyang Filipinas Dentro de Cien Años, nagbabala si Rizal:",
+     "say": "At heto pa! Sa sanaysay niyang Filipinas Dentro de Siyen Anyos, nagbabala si Rizal:"
+    },
+    {
+     "speaker": "narrator",
+     "text": "kapag patuloy na hindi pinakinggan ng Espanya ang mga Pilipino, maaaring dumating ang araw na hihiwalay ang Pilipinas."
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "image": "cards/12_monumento.jpg",
+   "background": "cards/_plate_12_monumento.jpg",
+   "card": {
+    "photo": "photos/rizal_monument.jpg",
+    "photo_mode": "full",
+    "photo_focus": [
+     0.42,
+     0.4
+    ],
+    "top": 800,
+    "badge": "ANG TANONG",
+    "headline": "Kung *pinakinggan* lang sila...",
+    "headline_size": 84,
+    "sub": "Magiging iba kaya ang ating kasaysayan?"
+   },
+   "sfx": [
+    {
+     "path": "../../assets/sfx/whoosh.wav",
+     "at": 0,
+     "volume": 0.05
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Kaya oo, bahagi ng naunang adhikain ni Rizal ang gawing probinsya ng Espanya ang Pilipinas."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Pero ang mas mahalagang tanong: kung pinagbigyan ng Espanya ang kanilang mga reporma, magiging iba kaya ang kasaysayan ng ating bansa?",
+     "pause_after": 0.6
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "image": "cards/13_end.jpg",
+   "card": {
+    "badge": "ALAM MO BA?",
+    "headline": "Ang kasaysayan ay *mas malalim* kaysa sa ating akala.",
+    "headline_size": 78,
+    "sub": "I-follow ang Juan Fact a Day!",
+    "mascot": true
+   },
+   "sfx": [
+    {
+     "path": "audio/transition.wav",
+     "at": 0,
+     "volume": 0.06
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "I-comment mo ang sagot mo!"
+    },
+    {
+     "speaker": "narrator",
+     "text": "At kung gusto mo pa ng mga ganitong kwento, i-follow mo ako, dito sa Juan Fact a Day!",
+     "say": "At kung gusto mo pa ng mga ganitong kwento, i-follow mo ako, dito sa Hu-wan Fact a Day!"
+    }
+   ],
+   "hold_after": 1.2
+  }
+ ]
+}
