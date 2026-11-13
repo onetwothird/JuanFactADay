@@ -87,3 +87,43 @@ export function publishPaths(folder: string, slug: string): string[] {
 export function commitMessage(number: number, slug: string): string {
   return `content: publish story ${String(number).padStart(3, "0")} ${slug}`;
 }
+
+/** null when the parsed story.json has what lib/facts.ts needs, otherwise the problem. */
+export function storyJsonError(story: unknown): string | null {
+  return story && typeof story === "object" && Array.isArray((story as any).scenes)
+    ? null
+    : 'story.json must have a "scenes" list (the file from the video project).';
+}
+
+/** Problems that would break the site if this site.json were saved. */
+export function saveErrors(
+  folder: string,
+  site: any,
+  hasStoryJson: boolean,
+  others: { folder: string; slug: string }[],
+): string[] {
+  const errs: string[] = [];
+  const slug = String(site?.slug ?? "");
+  if (!safeName(slug)) errs.push("Slug is required (letters, numbers and dashes only).");
+  else if (others.some((o) => o.folder !== folder && o.slug === slug)) errs.push(`Another story already uses the slug "${slug}".`);
+  if (!site?.draft && !hasStoryJson) errs.push("Keep it as a draft until story.json is uploaded (Media tab). Without it the site cannot show the story.");
+  return errs;
+}
+
+/** Publishing only makes sense from main: that is the branch Vercel deploys. */
+export function branchError(branch: string): string | null {
+  return branch === "main" ? null : `You are on the "${branch}" branch. Switch to main before publishing (Vercel deploys main).`;
+}
+
+/** Admin requests must come from this computer, and from the admin page itself (not another website). */
+export function requestAllowed(host: string | null, origin: string | null): boolean {
+  if (!host) return false;
+  const hostname = host.replace(/:\d+$/, "").replace(/^\[|\]$/g, "");
+  if (!["localhost", "127.0.0.1", "::1"].includes(hostname)) return false;
+  if (!origin) return true;
+  try {
+    return new URL(origin).host === host;
+  } catch {
+    return false;
+  }
+}

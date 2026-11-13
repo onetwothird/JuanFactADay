@@ -4,8 +4,8 @@ import { readStory, saveStory } from "@/lib/admin/store";
 export const dynamic = "force-dynamic";
 type Ctx = { params: Promise<{ folder: string }> };
 
-export async function GET(_req: Request, { params }: Ctx) {
-  const blocked = devOnly();
+export async function GET(req: Request, { params }: Ctx) {
+  const blocked = devOnly(req);
   if (blocked) return blocked;
   const { folder } = await params;
   const bad = badFolder(folder);
@@ -18,7 +18,7 @@ export async function GET(_req: Request, { params }: Ctx) {
 }
 
 export async function PUT(req: Request, { params }: Ctx) {
-  const blocked = devOnly();
+  const blocked = devOnly(req);
   if (blocked) return blocked;
   const { folder } = await params;
   const bad = badFolder(folder);

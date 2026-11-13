@@ -84,7 +84,14 @@ export function getAllFacts(): Fact[] {
   // A story folder with "draft": true in site.json is skipped (handy for work in progress).
   const live = folders.filter((folder) => {
     const p = path.join(STORIES_DIR, folder, "site.json");
-    return !(fs.existsSync(p) && JSON.parse(fs.readFileSync(p, "utf-8")).draft === true);
+    if (fs.existsSync(p) && JSON.parse(fs.readFileSync(p, "utf-8")).draft === true) return false;
+    // A folder without a usable story.json (e.g. a half-made story) is skipped, not allowed to break every page.
+    try {
+      const story = JSON.parse(fs.readFileSync(path.join(STORIES_DIR, folder, "story.json"), "utf-8"));
+      if (Array.isArray(story?.scenes)) return true;
+    } catch {}
+    console.warn(`[facts] Skipping ${folder}: story.json is missing or has no "scenes" list.`);
+    return false;
   });
 
   const facts: Fact[] = live.map((folder) => {

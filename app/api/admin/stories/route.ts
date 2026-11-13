@@ -3,14 +3,14 @@ import { createStory, listStories } from "@/lib/admin/store";
 
 export const dynamic = "force-dynamic";
 
-export async function GET() {
-  const blocked = devOnly();
+export async function GET(req: Request) {
+  const blocked = devOnly(req);
   if (blocked) return blocked;
   return Response.json({ stories: listStories(), syncSource: process.env.ADMIN_STORIES_SRC ?? "" });
 }
 
 export async function POST(req: Request) {
-  const blocked = devOnly();
+  const blocked = devOnly(req);
   if (blocked) return blocked;
   try {
     const { title } = await req.json();

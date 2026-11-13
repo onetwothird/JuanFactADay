@@ -5,7 +5,10 @@ import { execFile } from "node:child_process";
 import { CATEGORIES } from "@/lib/categories";
 import { SITE } from "@/lib/util";
 import {
+  branchError,
   commitMessage,
+  saveErrors,
+  storyJsonError,
   nextFolderName,
   publishPaths,
   safeName,
@@ -48,6 +51,14 @@ function slugOf(folder: string): string {
   return site.slug ?? folder.replace(/^\d+_/, "");
 }
 
+function storyJsonOk(p: string): boolean {
+  try {
+    return storyJsonError(JSON.parse(fs.readFileSync(p, "utf-8"))) === null;
+  } catch {
+    return false;
+  }
+}
+
 export function readStory(folder: string): StoryRecord {
   const dir = storyDir(folder);
   if (!fs.existsSync(dir)) throw new Error(`Story folder not found: ${folder}`);
@@ -60,7 +71,7 @@ export function readStory(folder: string): StoryRecord {
     site,
     siteEn: readJson(path.join(dir, "site.en.json")) ?? {},
     caption: fs.existsSync(path.join(dir, "caption.txt")) ? fs.readFileSync(path.join(dir, "caption.txt"), "utf-8") : "",
-    hasStoryJson: fs.existsSync(path.join(dir, "story.json")),
+    hasStoryJson: storyJsonOk(path.join(dir, "story.json")),
     media: {
       video: vid(`${slug}.mp4`),
       vtt: vid(`${slug}.vtt`),
@@ -109,7 +120,12 @@ const hasContent = (v: unknown): boolean =>
 export function saveStory(folder: string, data: { site: any; siteEn: any; caption: string }): StoryRecord {
   const dir = storyDir(folder);
   if (!fs.existsSync(dir)) throw new Error(`Story folder not found: ${folder}`);
-  if (data.site?.slug && !safeName(data.site.slug)) throw new Error("Slug may only contain letters, numbers and dashes.");
+  const others = fs
+    .readdirSync(STORIES, { withFileTypes: true })
+    .filter((d) => d.isDirectory() && safeName(d.name))
+    .map((d) => ({ folder: d.name, slug: slugOf(d.name) }));
+  const errs = saveErrors(folder, data.site, storyJsonOk(path.join(dir, "story.json")), others);
+  if (errs.length) throw new Error(errs.join("\n"));
   writeJson(path.join(dir, "site.json"), data.site);
   if (hasContent(data.siteEn) || fs.existsSync(path.join(dir, "site.en.json"))) writeJson(path.join(dir, "site.en.json"), data.siteEn ?? {});
   writeText(path.join(dir, "caption.txt"), data.caption ?? "");
@@ -149,7 +165,13 @@ export async function runSync(source: string): Promise<{ ok: boolean; log: strin
 export async function publish(folder: string): Promise<{ ok: boolean; errors: string[]; log: string }> {
   const story = readStory(folder);
   const errors = validateStory(story, CATEGORIES.map((c) => c.slug));
+  const branch = (await run("git", ["rev-parse", "--abbrev-ref", "HEAD"])).out.split("\n")[1]?.trim() ?? "";
+  const wrongBranch = branchError(branch);
+  if (wrongBranch) errors.push(wrongBranch);
   if (errors.length) return { ok: false, errors, log: "" };
+
+  // Commits already waiting on main get pushed too: say so, so nothing goes out unnoticed.
+  const pending = (await run("git", ["log", "--oneline", "@{u}..HEAD"])).out.split("\n").slice(1).filter(Boolean);
 
   // Only this story's paths: anything that exists on disk, or is tracked (so deletions are committed too).
   const paths: string[] = [];
@@ -172,6 +194,7 @@ export async function publish(folder: string): Promise<{ ok: boolean; errors: st
   } else {
     log += "Nothing new to commit for this story. Pushing anything not yet on GitHub.\n";
   }
+  if (pending.length) log += `\nAlso sent to GitHub (commits you made earlier that were not pushed yet):\n${pending.join("\n")}\n\n`;
   const pushed = (await step(["push"])) === 0;
   if (!pushed) log += "\nThe commit is saved on your computer but did not reach GitHub. Fix the problem above and click Publish again.\n";
   return { ok: pushed, errors: [], log };

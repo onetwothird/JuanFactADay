@@ -85,3 +85,39 @@ test("publishPaths and commitMessage", () => {
   ]);
   assert.equal(commitMessage(5, "rizal"), "content: publish story 005 rizal");
 });
+
+// ---- final review fixes ----
+import { storyJsonError, saveErrors, branchError, requestAllowed } from "../lib/admin/core.ts";
+
+test("storyJsonError rejects story.json without a scenes array", () => {
+  assert.match(storyJsonError({}) ?? "", /scenes/);
+  assert.match(storyJsonError(null) ?? "", /scenes/);
+  assert.match(storyJsonError({ scenes: "x" }) ?? "", /scenes/);
+  assert.equal(storyJsonError({ scenes: [] }), null);
+});
+
+test("saveErrors blocks saves that would crash the site", () => {
+  const others = [{ folder: "001_a", slug: "taken" }];
+  assert.deepEqual(saveErrors("006_x", { slug: "ok", draft: true }, false, others), []);
+  assert.ok(saveErrors("006_x", { slug: "", draft: true }, true, others).some((e) => /slug/i.test(e)));
+  assert.ok(saveErrors("006_x", { slug: "a/b", draft: true }, true, others).some((e) => /slug/i.test(e)));
+  assert.ok(saveErrors("006_x", { slug: "taken", draft: true }, true, others).some((e) => /already/i.test(e)));
+  assert.deepEqual(saveErrors("001_a", { slug: "taken" }, true, others), []); // its own slug is fine
+  assert.ok(saveErrors("006_x", { slug: "ok" }, false, others).some((e) => /story\.json/.test(e)));
+});
+
+test("branchError only allows publishing from main", () => {
+  assert.equal(branchError("main"), null);
+  assert.match(branchError("feat/local-admin") ?? "", /main/);
+});
+
+test("requestAllowed only accepts same-machine requests", () => {
+  assert.equal(requestAllowed("localhost:3000", null), true);
+  assert.equal(requestAllowed("127.0.0.1:3000", "http://127.0.0.1:3000"), true);
+  assert.equal(requestAllowed("localhost:3000", "http://localhost:3000"), true);
+  assert.equal(requestAllowed("[::1]:3000", null), true);
+  assert.equal(requestAllowed("192.168.1.5:3000", null), false);
+  assert.equal(requestAllowed("localhost:3000", "https://evil.example"), false);
+  assert.equal(requestAllowed("localhost:3000", "http://localhost:4000"), false);
+  assert.equal(requestAllowed(null, null), false);
+});

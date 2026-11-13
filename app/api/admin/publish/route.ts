@@ -4,7 +4,7 @@ import { publish } from "@/lib/admin/store";
 export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
-  const blocked = devOnly();
+  const blocked = devOnly(req);
   if (blocked) return blocked;
   const { folder } = await req.json().catch(() => ({}));
   const bad = badFolder(folder);
