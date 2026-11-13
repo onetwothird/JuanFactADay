@@ -537,8 +537,8 @@ select.sort { min-height: 46px; border-radius: 999px; border: 3px solid var(--li
 .hero-juan .bubble { position: absolute; left: 50%; top: -6px; translate: -64% -100%; white-space: nowrap; }
 /* Tail on the bubble's left side, slanting down-right so its tip points at Juan's head. */
 .hero-juan .bubble { --tail: 24px; }
-.hero-juan .bubble::before { width: 44px; height: 28px; clip-path: polygon(0 0, 46% 0, 100% 100%); }
-.hero-juan .bubble::after { left: calc(var(--tail) + 4px); width: 32px; height: 20px; clip-path: polygon(0 0, 46% 0, 100% 100%); }
+.hero-juan .bubble::before { width: 30px; height: 18px; clip-path: polygon(0 0, 55% 0, 100% 100%); }
+.hero-juan .bubble::after { left: calc(var(--tail) + 4px); width: 20px; height: 11px; clip-path: polygon(0 0, 55% 0, 100% 100%); }
 .hero-reel { position: relative; margin: 0; width: min(290px, 64vw); z-index: 2; }
 .hero-reel-badge { position: absolute; top: -14px; left: 16px; z-index: 3; }
 .hero-reel figcaption { margin-top: 18px; font-weight: 700; line-height: 1.3; }
