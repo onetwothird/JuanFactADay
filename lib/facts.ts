@@ -69,9 +69,12 @@ function parseCaption(raw: string): { caption: string; sources: Source[] } {
 }
 
 let cache: Fact[] | null = null;
+// In dev the admin page edits content while the server runs, so always re-read it.
+const DEV = process.env.NODE_ENV === "development";
 
 export function getAllFacts(): Fact[] {
-  if (cache) return cache;
+  if (cache && !DEV) return cache;
+  english.clear();
   const folders = fs
     .readdirSync(STORIES_DIR, { withFileTypes: true })
     .filter((d) => d.isDirectory())
@@ -81,7 +84,14 @@ export function getAllFacts(): Fact[] {
   // A story folder with "draft": true in site.json is skipped (handy for work in progress).
   const live = folders.filter((folder) => {
     const p = path.join(STORIES_DIR, folder, "site.json");
-    return !(fs.existsSync(p) && JSON.parse(fs.readFileSync(p, "utf-8")).draft === true);
+    if (fs.existsSync(p) && JSON.parse(fs.readFileSync(p, "utf-8")).draft === true) return false;
+    // A folder without a usable story.json (e.g. a half-made story) is skipped, not allowed to break every page.
+    try {
+      const story = JSON.parse(fs.readFileSync(path.join(STORIES_DIR, folder, "story.json"), "utf-8"));
+      if (Array.isArray(story?.scenes)) return true;
+    } catch {}
+    console.warn(`[facts] Skipping ${folder}: story.json is missing or has no "scenes" list.`);
+    return false;
   });
 
   const facts: Fact[] = live.map((folder) => {
@@ -168,7 +178,7 @@ export function getFacts(lang: Lang): Fact[] {
   const base = getAllFacts();
   if (lang === "fil") return base;
   const hit = byLang.get(lang);
-  if (hit) return hit;
+  if (hit && !DEV) return hit;
   const list = base.map((f) => {
     const e = english.get(f.slug);
     if (!e) return f;

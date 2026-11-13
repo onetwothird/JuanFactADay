@@ -16,7 +16,22 @@ npm run dev        # open http://localhost:3000
 
 To check the production build: `npm run build && npm start`.
 
-## Add a new fact
+## Add a new fact with the admin page (easiest)
+
+1. `npm run dev`, then open **http://localhost:3000/admin**. It only works on your computer. The live site returns "not found".
+2. **New story:** type a title and click **Add**. It starts as a draft (hidden).
+   Or click **Import** to copy stories from your video project folder. Set `ADMIN_STORIES_SRC` in `.env.local` so you don't have to type the path.
+3. Fill in the tabs:
+   - **Filipino:** title, category, takeaways, quiz.
+   - **English:** the translation. Anything left empty stays in Filipino.
+   - **Caption & sources:** sources are required.
+   - **Media:** upload the video, .vtt, poster, thumbnail, story.json and cards.
+4. Click **Save**. `localhost:3000` shows the change right away. Untick **Draft** when it's ready.
+5. Click **Publish**. It checks the story, then commits and pushes only that story's files. Vercel updates the live site in about a minute.
+
+The newest story with a video becomes the home page's "latest" Reel, and its quiz questions join `/quiz` automatically.
+
+## Add a new fact by hand
 
 Each fact is one folder in `content/stories/`:
 
