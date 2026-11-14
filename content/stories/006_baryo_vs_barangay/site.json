@@ -1,0 +1,56 @@
+{
+ "number": 6,
+ "slug": "baryo-vs-barangay",
+ "title": "Baryo vs Barangay: ano ang pinagkaiba?",
+ "category": "wika",
+ "tags": [
+  "barangay",
+  "baryo",
+  "barrio",
+  "balangay",
+  "pd 557",
+  "1974",
+  "barrio charter act",
+  "datu",
+  "butuan",
+  "pinagkaiba"
+ ],
+ "published": "2026-11-14",
+ "verified": "2026-11-14",
+ "big_number": "1974",
+ "big_number_label": "ang taon na ginawang barangay ang lahat ng barrio (Presidential Decree No. 557)",
+ "takeaways": [
+  "Iisa lang ang baryo at barangay. Ang barangay ang orihinal na pamayanang Pilipino, na pinamumunuan ng datu, at galing ang pangalan nito sa balangay, ang sinaunang bangka.",
+  "Sa panahon ng Espanyol, tinawag itong barrio, salitang Espanyol para sa kapitbahayan. Baryo pa rin ang opisyal na tawag kahit sa Barrio Charter Act ng 1959.",
+  "Noong Setyembre 21, 1974, ginawang barangay ang lahat ng barrio sa bisa ng PD 557. Ngayon, mahigit 42,000 ang barangay, ang pinakamaliit na yunit ng pamahalaan."
+ ],
+ "quiz": [
+  {
+   "q": "Saan galing ang salitang 'barangay'?",
+   "options": [
+    "Balangay, isang sinaunang bangka",
+    "Salitang Espanyol",
+    "Salitang Ingles"
+   ],
+   "answer": 0
+  },
+  {
+   "q": "Anong taon ginawang barangay ang lahat ng barrio?",
+   "options": [
+    "1959",
+    "1974",
+    "1991"
+   ],
+   "answer": 1
+  },
+  {
+   "q": "Ano ang ibig sabihin ng 'barrio' sa Espanyol?",
+   "options": [
+    "Bangka",
+    "Kapitbahayan",
+    "Pinuno"
+   ],
+   "answer": 1
+  }
+ ]
+}

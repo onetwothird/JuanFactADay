@@ -1,0 +1,24 @@
+Baryo o barangay? 🤔 Iisa lang pala sila! Ang "barangay" ang orihinal (galing sa balangay ⛵), "barrio" ang tawag ng mga Espanyol, at noong 1974 ibinalik ang sariling atin. Ikaw, baryo o barangay ang tawag n'yo sa inyo? I-comment! 👇
+#AlamMoBa #PinoyFacts #KasaysayanNgPilipinas #Barangay #ReelsPH #FactsPH #JuanFactADay
+
+Sources (for you, not for posting):
+- P.D. No. 557 (Sept 21, 1974), "Declaring all barrios in the Philippines as barangays"; preamble: "barrio" is of foreign origin; barrio officials renamed barangay captain/councilman:
+  https://www.lawphil.net/statutes/presdecs/pd1974/pd_557_1974.html
+- Pre-colonial barangay led by a datu, ~30-100 families (Plasencia, 1589); Spanish consolidation into pueblos (reducción); barangay later called barrio, cabeza de barangay -> teniente del barrio; name from "balangay"; 1991 Local Government Code (R.A. 7160) makes the barangay the basic political unit:
+  https://en.wikipedia.org/wiki/Barangay
+- Barrio Charter Act, R.A. 2370 (1959): barrios as local government units with elected barrio councils:
+  https://www.asj.upd.edu.ph/mediabox/archive/ASJ-05-01-1967/zamora-political-history-autonomy-change-barrio-charter.pdf
+- Butuan balangay (Boat One) found 1976, radiocarbon-dated to about 320 AD; Balangay Shrine Museum, Libertad, Butuan:
+  https://en.wikipedia.org/wiki/Balangay
+- Spanish "barrio" = neighborhood / district (from Andalusi Arabic "barri", outer/exterior):
+  https://en.wiktionary.org/wiki/barrio
+- Number of barangays: PSA PSGC 42,046 (2020); 42,022 as of Dec 2022 (PSA census) -> video says "mahigit 42,000":
+  https://psa.gov.ph/classification/psgc
+
+Notes on accuracy (kept on purpose):
+- "Galing sa balangay" is the standard etymology; the video doesn't claim every barangay arrived by boat.
+- "30 hanggang 100 pamilya" is the usual range from Plasencia's account (the main early source).
+- "Baryo" is still used informally today (e.g. "taga-baryo" = from the countryside), so the video says lolo is still right.
+
+Art: all illustrations (signs, balangay, nipa village, PD 557 document, stamp, barangay hall, Juan poses) are original,
+drawn in code (art/make_art.py). Music: original (audio/make_score.py). No third-party photos.

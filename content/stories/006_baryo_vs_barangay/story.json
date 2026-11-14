@@ -1,0 +1,430 @@
+{
+ "extends": "../../channel.json",
+ "title": "Baryo vs Barangay",
+ "output": {
+  "path": "006_baryo_vs_barangay.mp4",
+  "aspect": "9:16"
+ },
+ "voices": {
+  "narrator": {
+   "engine": "edge",
+   "voice": "fil-PH-AngeloNeural",
+   "rate": "+8%",
+   "pitch": "-2Hz"
+  }
+ },
+ "defaults": {
+  "max_pause": 0.35
+ },
+ "music": {
+  "path": "audio/score.wav",
+  "volume": 0.12
+ },
+ "scenes": [
+  {
+   "video": "anim/01_vs.mp4",
+   "sfx": [
+    {
+     "path": "../../assets/sfx/whoosh.wav",
+     "at": 0.18,
+     "volume": 0.05
+    },
+    {
+     "path": "../../assets/sfx/whoosh.wav",
+     "at": 1.537,
+     "volume": 0.05
+    },
+    {
+     "path": "audio/boom.wav",
+     "at": 2.653,
+     "volume": 0.16
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Ito ay baryo. At ito naman ay barangay."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Ano nga ba ang pinagkaiba nila?",
+     "pause_after": 0.6
+    }
+   ]
+  },
+  {
+   "video": "anim/02_lolo.mp4",
+   "sfx": [
+    {
+     "path": "../../assets/sfx/pop.wav",
+     "at": 0.957,
+     "volume": 0.08
+    },
+    {
+     "path": "../../assets/sfx/pop.wav",
+     "at": 2.789,
+     "volume": 0.08
+    },
+    {
+     "path": "audio/transition.wav",
+     "at": 4.269,
+     "volume": 0.05
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Si lolo at lola, baryo ang tawag. Pero sa ID mo, barangay ang nakasulat."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Magkaiba ba talaga sila?",
+     "pause_after": 0.6
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "video": "anim/03_iisa.mp4",
+   "sfx": [
+    {
+     "path": "audio/boom.wav",
+     "at": 0.883,
+     "volume": 0.2
+    },
+    {
+     "path": "../../assets/sfx/ding.wav",
+     "at": 1.133,
+     "volume": 0.07
+    },
+    {
+     "path": "audio/transition.wav",
+     "at": 1.778,
+     "volume": 0.05
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Ang sagot: iisa lang sila!"
+    },
+    {
+     "speaker": "narrator",
+     "text": "Pero bakit dalawa ang pangalan? Balikan natin ang kasaysayan."
+    }
+   ]
+  },
+  {
+   "image": "cards/04_datu.jpg",
+   "card": {
+    "badge": "BAGO ANG MGA ESPANYOL",
+    "headline": "Ang orihinal na *barangay*",
+    "headline_size": 86,
+    "sub": "Pinamumunuan ng datu · mga 30 hanggang 100 pamilya",
+    "art": "village"
+   },
+   "sfx": [
+    {
+     "path": "../../assets/sfx/whoosh.wav",
+     "at": 0,
+     "volume": 0.05
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Bago pa dumating ang mga Espanyol, may mga pamayanan na tayong tinatawag na barangay."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Bawat isa ay pinamumunuan ng datu, at karaniwang may tatlumpu hanggang isandaang pamilya."
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "video": "anim/05_balangay.mp4",
+   "sfx": [
+    {
+     "path": "../../assets/sfx/pop.wav",
+     "at": 5.215,
+     "volume": 0.08
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "At ang pangalan nito? Galing sa balangay, ang bangkang ginamit ng ating mga ninuno sa paglalayag."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Sa Butuan, may nahukay na balangay na tinatayang mula pa noong taong 320!",
+     "say": "Sa Butuan, may nahukay na balangay na tinatayang mula pa noong taong three hundred twenty!"
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "video": "anim/06_espanyol.mp4",
+   "sfx": [
+    {
+     "path": "../../assets/sfx/pop.wav",
+     "at": 5.07,
+     "volume": 0.07
+    },
+    {
+     "path": "audio/transition.wav",
+     "at": 7.122,
+     "volume": 0.07
+    },
+    {
+     "path": "../../assets/sfx/ding.wav",
+     "at": 7.302,
+     "volume": 0.06
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "At alam mo rin ba? Nang dumating ang mga Espanyol, pinagsama-sama nila ang mga barangay sa mga bayan, o pueblo."
+    },
+    {
+     "speaker": "narrator",
+     "text": "At ang mga barangay, tinawag nilang barrio."
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "image": "cards/07_kahulugan.jpg",
+   "card": {
+    "badge": "SALITANG ESPANYOL",
+    "big": "BARRIO",
+    "big_size": 210,
+    "headline": "ibig sabihin: *kapitbahayan*",
+    "headline_size": 80,
+    "sub": "Sa ating baybay: baryo",
+    "art": "juan_q",
+    "art_scale": 0.62
+   },
+   "sfx": [
+    {
+     "path": "audio/transition.wav",
+     "at": 0,
+     "volume": 0.06
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Ang barrio ay salitang Espanyol na ang ibig sabihin ay kapitbahayan. Sa ating baybay: baryo."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Kaya sa mahabang panahon, baryo ang naging tawag natin dito."
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "image": "cards/08_1959.jpg",
+   "card": {
+    "badge": "R.A. 2370",
+    "big": "1959",
+    "headline": "Barrio *Charter* Act",
+    "headline_size": 84,
+    "sub": "May sariling konseho ang bawat baryo",
+    "art": "sign_baryo",
+    "art_scale": 0.9
+   },
+   "sfx": [
+    {
+     "path": "../../assets/sfx/whoosh.wav",
+     "at": 0,
+     "volume": 0.05
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Kahit noong 1959, nang ipasa ang Barrio Charter Act, baryo pa rin ang opisyal na tawag.",
+     "say": "Kahit noong nineteen fifty-nine, nang ipasa ang Barrio Charter Act, baryo pa rin ang opisyal na tawag."
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "video": "anim/09_pd557.mp4",
+   "sfx": [
+    {
+     "path": "../../assets/sfx/whoosh.wav",
+     "at": 4.077,
+     "volume": 0.05
+    },
+    {
+     "path": "audio/boom.wav",
+     "at": 6.806,
+     "volume": 0.2
+    },
+    {
+     "path": "../../assets/sfx/pop.wav",
+     "at": 7.186,
+     "volume": 0.07
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "At heto pa! Noong 1974, nilagdaan ni Pangulong Ferdinand Marcos ang Presidential Decree 557.",
+     "say": "At heto pa! Noong nineteen seventy-four, nilagdaan ni Pangulong Ferdinand Marcos ang Presidential Decree five fifty-seven."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Lahat ng baryo sa buong bansa, ginawang barangay!"
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "image": "cards/10_bakit.jpg",
+   "card": {
+    "badge": "BAKIT?",
+    "headline": "Ibinalik ang *sariling atin*",
+    "headline_size": 88,
+    "sub": "Ayon sa PD 557: banyaga ang pinagmulan ng salitang \"barrio\"",
+    "art": "hall"
+   },
+   "sfx": [
+    {
+     "path": "audio/transition.wav",
+     "at": 0,
+     "volume": 0.06
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Bakit? Ayon mismo sa dekreto, banyaga ang pinagmulan ng salitang barrio."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Kaya ibinalik ang sariling atin: barangay."
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "video": "anim/11_42000.mp4",
+   "sfx": [
+    {
+     "path": "audio/transition.wav",
+     "at": 0.573,
+     "volume": 0.05
+    },
+    {
+     "path": "../../assets/sfx/ding.wav",
+     "at": 2.023,
+     "volume": 0.07
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Ngayon, mahigit 42,000 ang barangay sa buong Pilipinas.",
+     "say": "Ngayon, mahigit forty-two thousand ang barangay sa buong Pilipinas."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Ito ang pinakamaliit na yunit ng ating pamahalaan."
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "video": "anim/12_recap.mp4",
+   "sfx": [
+    {
+     "path": "../../assets/sfx/pop.wav",
+     "at": 1.942,
+     "volume": 0.06
+    },
+    {
+     "path": "../../assets/sfx/pop.wav",
+     "at": 2.567,
+     "volume": 0.06
+    },
+    {
+     "path": "../../assets/sfx/pop.wav",
+     "at": 4.965,
+     "volume": 0.06
+    },
+    {
+     "path": "../../assets/sfx/pop.wav",
+     "at": 5.729,
+     "volume": 0.06
+    },
+    {
+     "path": "../../assets/sfx/pop.wav",
+     "at": 6.39,
+     "volume": 0.06
+    },
+    {
+     "path": "../../assets/sfx/pop.wav",
+     "at": 6.54,
+     "volume": 0.06
+    },
+    {
+     "path": "../../assets/sfx/ding.wav",
+     "at": 9.273,
+     "volume": 0.07
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Kaya ano ang pinagkaiba? Ang barangay ang orihinal at opisyal na pangalan."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Ang baryo naman ay galing sa Espanyol, at lumang tawag na lang ngayon."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Pero kapag sinabi ni lolo na taga-baryo siya, tama pa rin siya!"
+    }
+   ],
+   "transition": "fade"
+  },
+  {
+   "image": "cards/13_end.jpg",
+   "card": {
+    "badge": "IKAW?",
+    "headline": "*Baryo* o *barangay* ang tawag n'yo?",
+    "headline_size": 84,
+    "sub": "I-comment mo! · I-follow ang Juan Fact a Day",
+    "art": "juan_happy",
+    "art_scale": 0.75
+   },
+   "sfx": [
+    {
+     "path": "../../assets/sfx/pop.wav",
+     "at": 0,
+     "volume": 0.08
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Ikaw, baryo o barangay ang tawag n'yo sa inyo? I-comment mo!"
+    },
+    {
+     "speaker": "narrator",
+     "text": "At kung gusto mo pa ng ganitong pinagkaiba, i-follow mo ako dito sa Juan Fact a Day!",
+     "say": "At kung gusto mo pa ng ganitong pinagkaiba, i-follow mo ako dito sa Hu-wan Fact a Day!"
+    }
+   ],
+   "transition": "fade",
+   "hold_after": 1.2
+  }
+ ]
+}
